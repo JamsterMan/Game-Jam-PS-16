@@ -1,6 +1,6 @@
 extends Node2D
 
-func _minigame_info_timer_timeout():
+func _minigame_timer_timeout():
 	print("Mini game start")
 	#hide info screen
 	get_child(0)._hide_info()
@@ -14,6 +14,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _minigame_win():
+	get_child(2).set_visible(true)
+
+func _minigame_lose():
+	get_child(3).set_visible(true)

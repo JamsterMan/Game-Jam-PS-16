@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 
 @export var aim_speed : int = 50
 

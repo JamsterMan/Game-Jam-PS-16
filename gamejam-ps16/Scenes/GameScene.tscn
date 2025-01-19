@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfu28pq6wuky7"]
+[gd_scene load_steps=5 format=3 uid="uid://cfu28pq6wuky7"]
 
-[ext_resource type="Texture2D" uid="uid://c8a7udy6go8yv" path="res://Sprites/Player.png" id="1_dshne"]
 [ext_resource type="Script" path="res://Scripts/mini_game_controller.gd" id="1_pg6cp"]
 [ext_resource type="Texture2D" uid="uid://dhhx8mjg6g4y7" path="res://icon.svg" id="1_yf4bn"]
-[ext_resource type="Texture2D" uid="uid://cef2hiojxmf1k" path="res://Sprites/Enemy.png" id="2_mstul"]
-[ext_resource type="Script" path="res://Scripts/MiniGame_info.gd" id="5_f6n46"]
-[ext_resource type="Script" path="res://Scripts/crosshair.gd" id="6_hvfib"]
-[ext_resource type="Texture2D" uid="uid://do26r2t7hfm2q" path="res://Sprites/crosshair.png" id="8_ofofj"]
+[ext_resource type="PackedScene" uid="uid://b553lrn1iqdav" path="res://Scenes/mini_game_aim_game.tscn" id="4_bhv5a"]
+[ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="5_f6n46"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,46 +12,21 @@
 [node name="MiniGameController" type="Node2D" parent="."]
 script = ExtResource("1_pg6cp")
 
-[node name="Minigame_Info_Timer" type="Timer" parent="MiniGameController"]
+[node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
 one_shot = true
 autostart = true
 script = ExtResource("5_f6n46")
 
-[node name="Minigame_Info" type="TextureRect" parent="MiniGameController/Minigame_Info_Timer"]
+[node name="MinigameInfo" type="TextureRect" parent="MiniGameController/MinigameInfoTimer"]
 offset_left = -575.0
 offset_top = -322.0
 offset_right = 576.0
 offset_bottom = 325.0
 texture = ExtResource("1_yf4bn")
 
-[node name="MiniGame" type="Node2D" parent="MiniGameController"]
-process_mode = 4
-visible = false
-position = Vector2(-614, -349)
+[node name="MiniGameAimGame" parent="MiniGameController" instance=ExtResource("4_bhv5a")]
 
-[node name="Minigame_Background" type="ColorRect" parent="MiniGameController/MiniGame"]
-offset_right = 1212.0
-offset_bottom = 693.0
-color = Color(0, 0.396549, 0.399054, 1)
-
-[node name="Player" type="Sprite2D" parent="MiniGameController/MiniGame"]
-position = Vector2(458, 342)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_dshne")
-
-[node name="Enemy" type="Sprite2D" parent="MiniGameController/MiniGame"]
-position = Vector2(814, 346)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_mstul")
-
-[node name="Crosshair" type="Sprite2D" parent="MiniGameController/MiniGame"]
-position = Vector2(615, 347)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_ofofj")
-script = ExtResource("6_hvfib")
-aim_speed = 150
-
-[node name="MiniGame_Win" type="TextureRect" parent="MiniGameController"]
+[node name="MiniGameWin" type="TextureRect" parent="MiniGameController"]
 visible = false
 offset_left = -575.0
 offset_top = -322.0
@@ -62,10 +34,36 @@ offset_right = 576.0
 offset_bottom = 325.0
 texture = ExtResource("1_yf4bn")
 
-[node name="MiniGame_Lose" type="TextureRect" parent="MiniGameController"]
+[node name="Label" type="Label" parent="MiniGameController/MiniGameWin"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 972.0
+offset_bottom = 437.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "YOU WIN
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MiniGameLose" type="TextureRect" parent="MiniGameController"]
 visible = false
 offset_left = -575.0
 offset_top = -322.0
 offset_right = 576.0
 offset_bottom = 325.0
 texture = ExtResource("1_yf4bn")
+flip_v = true
+
+[node name="Label" type="Label" parent="MiniGameController/MiniGameLose"]
+offset_left = 180.0
+offset_top = 198.0
+offset_right = 968.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "YOU LOSE
+"
+horizontal_alignment = 1
+vertical_alignment = 1

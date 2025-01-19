@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://b553lrn1iqdav"]
+
+[ext_resource type="Script" path="res://Scripts/mini_game_aim_game.gd" id="1_r3ngn"]
+[ext_resource type="Texture2D" uid="uid://c8a7udy6go8yv" path="res://Sprites/Player.png" id="2_64nno"]
+[ext_resource type="Texture2D" uid="uid://cef2hiojxmf1k" path="res://Sprites/Enemy.png" id="3_uk46h"]
+[ext_resource type="Script" path="res://Scripts/crosshair.gd" id="4_rrvqo"]
+[ext_resource type="Texture2D" uid="uid://do26r2t7hfm2q" path="res://Sprites/crosshair.png" id="5_bpjir"]
+[ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="6_oxthh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a4tl"]
+radius = 35.6309
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp46v"]
+radius = 27.5
+
+[node name="MiniGameAimGame" type="Node2D"]
+process_mode = 4
+visible = false
+position = Vector2(-614, -349)
+script = ExtResource("1_r3ngn")
+
+[node name="MinigameBackground" type="ColorRect" parent="."]
+offset_right = 1212.0
+offset_bottom = 693.0
+color = Color(0, 0.396549, 0.399054, 1)
+
+[node name="Target" type="Area2D" parent="."]
+position = Vector2(458, 342)
+
+[node name="TargetSprite" type="Sprite2D" parent="Target"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_64nno")
+
+[node name="TargetCollision" type="CollisionShape2D" parent="Target"]
+position = Vector2(62, -50.75)
+shape = SubResource("CircleShape2D_3a4tl")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(814, 346)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_uk46h")
+
+[node name="Crosshair" type="Area2D" parent="."]
+position = Vector2(615, 347)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("4_rrvqo")
+aim_speed = 150
+
+[node name="CrosshairSprite" type="Sprite2D" parent="Crosshair"]
+texture = ExtResource("5_bpjir")
+
+[node name="CrosshairCollision" type="CollisionShape2D" parent="Crosshair"]
+position = Vector2(-2.5, -9.53674e-07)
+shape = SubResource("CircleShape2D_bp46v")
+
+[node name="MinigameTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+script = ExtResource("6_oxthh")
