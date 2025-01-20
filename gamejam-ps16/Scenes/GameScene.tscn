@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfu28pq6wuky7"]
+[gd_scene load_steps=8 format=3 uid="uid://cfu28pq6wuky7"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_controller.gd" id="1_pg6cp"]
 [ext_resource type="Texture2D" uid="uid://dhhx8mjg6g4y7" path="res://icon.svg" id="1_yf4bn"]
 [ext_resource type="Texture2D" uid="uid://drcf2ml14nas3" path="res://Sprites/Card1.png" id="4_2vm8c"]
+[ext_resource type="Script" path="res://Scripts/Next_MiniGame_Timer.gd" id="4_5uc8d"]
 [ext_resource type="PackedScene" uid="uid://b553lrn1iqdav" path="res://Scenes/mini_game_aim_game.tscn" id="4_bhv5a"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="5_f6n46"]
 [ext_resource type="Texture2D" uid="uid://ck70nmlw3c3ur" path="res://Sprites/Card2.png" id="5_sbe85"]
@@ -18,10 +19,12 @@ color = Color(0, 0.396549, 0.399054, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "minigame_win", "minigame_lose")]
+[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose")]
 script = ExtResource("1_pg6cp")
 minigame_info_timer = NodePath("MinigameInfoTimer")
-minigame_win = NodePath("MiniGameWin")
+next_minigame_timer = NodePath("NextMinigameTimer")
+minigame_info = NodePath("MinigameInfoTimer/MinigameInfo")
+minigame_win = NodePath("NextMinigameTimer/MiniGameWin")
 minigame_lose = NodePath("MiniGameLose")
 
 [node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
@@ -36,15 +39,20 @@ offset_right = 576.0
 offset_bottom = 325.0
 texture = ExtResource("1_yf4bn")
 
-[node name="MiniGameWin" type="TextureRect" parent="MiniGameController"]
+[node name="NextMinigameTimer" type="Timer" parent="MiniGameController"]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("4_5uc8d")
+
+[node name="MiniGameWin" type="TextureRect" parent="MiniGameController/NextMinigameTimer"]
 visible = false
 offset_left = -575.0
 offset_top = -322.0
 offset_right = 576.0
-offset_bottom = 325.0
+offset_bottom = 478.0
 texture = ExtResource("4_2vm8c")
 
-[node name="Label" type="Label" parent="MiniGameController/MiniGameWin"]
+[node name="Label" type="Label" parent="MiniGameController/NextMinigameTimer/MiniGameWin"]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 48.0

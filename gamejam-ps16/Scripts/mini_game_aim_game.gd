@@ -1,10 +1,13 @@
 extends Node2D
 
 @export var person_count : int = 4
+@export var minigame_length : float = 3
+@export var target_area : Area2D
+@export var minigame_timer: Timer
 
 func _minigame_timer_timeout():
 	print("Mini game end")
-	if(get_child(0).get_child(0).has_overlapping_areas() ):
+	if(target_area.has_overlapping_areas() ):
 		print("Mini game win")
 		get_parent()._minigame_win()
 	else:
@@ -14,6 +17,7 @@ func _minigame_timer_timeout():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#set minigame info here
+	minigame_timer.start(minigame_length)
 	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
