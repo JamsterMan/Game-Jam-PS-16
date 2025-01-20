@@ -1,21 +1,43 @@
 extends Node2D
 
+@export var minigames : Array[String] = []
+@export var minigame_info_timer: Timer
+@export var minigame_win: TextureRect
+@export var minigame_lose: TextureRect
+var minigame
+
 func _minigame_timer_timeout():
 	print("Mini game start")
 	#hide info screen
-	get_child(0)._hide_info()
+	minigame_info_timer._hide_info()
 	#show and activate minigame
-	get_child(1).set_visible(true)
-	get_child(1).set_process_mode(PROCESS_MODE_INHERIT)
+	minigame.set_visible(true)
+	minigame.set_process_mode(PROCESS_MODE_INHERIT)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#set everything to chosen mini game?
+	minigame = get_child(3)
 	pass # Replace with function body.
 
-
 func _minigame_win():
-	get_child(2).set_visible(true)
+	#minigame_win.set_visible(true)
+	#go to next minigame after timer
+	_reset_minigame()
+
+func _reset_minigame():
+	#set up minigame info screen
+	minigame_info_timer._show_info()
+	minigame_info_timer.start(1)
+	#set up minigame
+	minigame.queue_free()
+	#choose game at semi random - try not to repeat games
+	var next_minigame = load("res://Scenes/mini_game_aim_game.tscn")
+	minigame = next_minigame.instantiate()
+	add_child(minigame)
 
 func _minigame_lose():
-	get_child(3).set_visible(true)
+	minigame_lose.set_visible(true)
+	#game over
+
+#func _set_minigame_info(string?):

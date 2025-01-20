@@ -1,6 +1,6 @@
 extends Node2D
 
-var person_count : int = 4
+@export var person_count : int = 4
 
 func _minigame_timer_timeout():
 	print("Mini game end")
@@ -13,6 +13,8 @@ func _minigame_timer_timeout():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#set minigame info here
+	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	for n in person_count:

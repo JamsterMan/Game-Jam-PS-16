@@ -6,3 +6,6 @@ func _ready() -> void:
 	
 func _hide_info() -> void:
 	get_child(0).set_visible(false)
+
+func _show_info() -> void:
+	get_child(0).set_visible(true)
