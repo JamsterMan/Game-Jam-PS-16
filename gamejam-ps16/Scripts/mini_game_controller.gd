@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var minigames : Array[String] = []
+#@export var minigames : Array[String] = [] 
 @export var minigame_info_timer: Timer
 @export var next_minigame_timer: Timer
 @export var minigame_info: TextureRect
@@ -30,6 +30,10 @@ func _minigame_win():
 	#go to next minigame after timer
 	#_reset_minigame()
 
+func _minigame_lose():
+	minigame_lose.set_visible(true)
+	#game over
+
 func _next_minigame_timer_timeout():
 	print("Next minigame loading")
 	_reset_minigame()
@@ -46,9 +50,5 @@ func _reset_minigame():
 	var next_minigame = load("res://Scenes/mini_game_aim_game.tscn")
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
-
-func _minigame_lose():
-	minigame_lose.set_visible(true)
-	#game over
 
 #func _set_minigame_info(string?):
