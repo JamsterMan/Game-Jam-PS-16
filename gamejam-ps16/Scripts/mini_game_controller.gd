@@ -1,6 +1,6 @@
 extends Node2D
 
-#@export var minigames : Array[String] = [] 
+@export var minigames : Array[String] = [] 
 @export var minigame_info_timer: Timer
 @export var next_minigame_timer: Timer
 @export var minigame_info: TextureRect
@@ -19,8 +19,13 @@ func _minigame_timer_timeout():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#set everything to chosen mini game?
 	#start with random minigame
+	#var rng = RandomNumberGenerator.new()
+	#rng.randomize()
+	#var minigame_path_index = rng.randi_range(0,minigames.size()-1)
+	#var next_minigame = load(minigames[minigame_path_index])
+	#minigame = next_minigame.instantiate()
+	#add_child(minigame)
 	minigame = get_child(3)
 	pass # Replace with function body.
 
@@ -28,7 +33,6 @@ func _minigame_win():
 	minigame_win.set_visible(true)
 	next_minigame_timer.start(2)
 	#go to next minigame after timer
-	#_reset_minigame()
 
 func _minigame_lose():
 	minigame_lose.set_visible(true)
@@ -47,7 +51,10 @@ func _reset_minigame():
 	#set up minigame
 	minigame.queue_free()
 	#choose game at semi random - try not to repeat games
-	var next_minigame = load("res://Scenes/mini_game_aim_game.tscn")
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var minigame_path_index = rng.randi_range(0,minigames.size()-1)
+	var next_minigame = load(minigames[minigame_path_index])
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
 

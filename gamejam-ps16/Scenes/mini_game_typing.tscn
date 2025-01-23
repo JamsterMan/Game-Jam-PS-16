@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=9 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Texture2D" uid="uid://c8a7udy6go8yv" path="res://Sprites/Player.png" id="1_5dvwy"]
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
@@ -7,15 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://biiqdw3di0er4" path="res://Sprites/right.png" id="4_4ra8d"]
 [ext_resource type="Texture2D" uid="uid://btmklwgoteix" path="res://Sprites/left.png" id="5_03j4l"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="7_j4qch"]
+[ext_resource type="Texture2D" uid="uid://drcf2ml14nas3" path="res://Sprites/Card1.png" id="7_kgq2p"]
 
 [node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("buttons_sprites")]
+process_mode = 4
 script = ExtResource("1_mxqhv")
 up_image = ExtResource("2_e7g2m")
 down_image = ExtResource("3_a0vw8")
 right_image = ExtResource("4_4ra8d")
 left_image = ExtResource("5_03j4l")
-buttons = Array[int]([0, 0, 0])
-buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree")]
+buttons = Array[int]([0, 0, 0, 0, 0, 0])
+buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
 
 [node name="target" type="Node2D" parent="."]
 
@@ -28,19 +30,34 @@ texture = ExtResource("1_5dvwy")
 position = Vector2(294, 187)
 
 [node name="ButtonOne" type="Sprite2D" parent="Spell"]
-position = Vector2(-91, 85)
+position = Vector2(-256, 81)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_e7g2m")
 
 [node name="ButtonTwo" type="Sprite2D" parent="Spell"]
-position = Vector2(15, 85)
+position = Vector2(-165, 81)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_e7g2m")
 
 [node name="ButtonThree" type="Sprite2D" parent="Spell"]
-position = Vector2(114, 84)
+position = Vector2(-76, 81)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_e7g2m")
+
+[node name="ButtonFour" type="Sprite2D" parent="Spell"]
+position = Vector2(13, 81)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_kgq2p")
+
+[node name="ButtonFive" type="Sprite2D" parent="Spell"]
+position = Vector2(102, 81)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_kgq2p")
+
+[node name="ButtonSix" type="Sprite2D" parent="Spell"]
+position = Vector2(191, 81)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_kgq2p")
 
 [node name="MinigameTimer" type="Timer" parent="."]
 wait_time = 3.0

@@ -12,6 +12,7 @@ enum button{UP,DOWN,LEFT,RIGHT}
 
 var next_button : String = "move_up"
 var correct_button_presses: int = 0
+var button_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,8 +20,10 @@ func _ready() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	#check for array size 
-	for n in buttons.size():
-		buttons[n] = rng.randi_range(0,4)
+	button_count = rng.randi_range(3,buttons.size()-1)
+	#adjust game time based on buttons (keep it harder for more buttons)
+	for n in button_count:
+		buttons[n] = rng.randi_range(0,3)
 		buttons_sprites[n].texture = _set_button_images(buttons[n])
 	_set_next_button()
 
@@ -36,7 +39,7 @@ func _set_button_images(num:int) -> Texture2D:
 
 #converts button ints into strings for input collection
 func _set_next_button():
-	if(correct_button_presses >= buttons.size()):
+	if(correct_button_presses >= button_count):
 		return
 	if(buttons[correct_button_presses] == button.UP):
 		next_button = "move_up"
@@ -49,7 +52,7 @@ func _set_next_button():
 
 func _minigame_timer_timeout():
 	print("Mini game end")
-	if(correct_button_presses == buttons.size()):
+	if(correct_button_presses == button_count):
 		print("Mini game win")
 		get_parent()._minigame_win()
 	else:
@@ -58,7 +61,8 @@ func _minigame_timer_timeout():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if(correct_button_presses < buttons.size()):
+	if(correct_button_presses < button_count):
 		if(Input.is_action_just_pressed(next_button)):
+			print(next_button)
 			correct_button_presses += 1
 			_set_next_button()
