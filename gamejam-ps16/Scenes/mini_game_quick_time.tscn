@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://1g1j0vqsint1"]
+
+[ext_resource type="Texture2D" uid="uid://dhhx8mjg6g4y7" path="res://icon.svg" id="1_ce1bs"]
+[ext_resource type="Script" path="res://Scripts/mini_game_quick_time.gd" id="1_khvof"]
+[ext_resource type="Texture2D" uid="uid://te2hhkoln3pv" path="res://Sprites/up.png" id="2_cpeha"]
+[ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="4_c8h27"]
+
+[node name="mini_game_quick_time" type="Node2D"]
+process_mode = 4
+script = ExtResource("1_khvof")
+
+[node name="MinigameBackground" type="ColorRect" parent="."]
+visible = false
+offset_left = -601.0
+offset_top = -343.0
+offset_right = 611.0
+offset_bottom = 350.0
+color = Color(0, 0.396549, 0.399054, 1)
+
+[node name="Target" type="Node2D" parent="."]
+
+[node name="Caracter" type="Sprite2D" parent="Target"]
+position = Vector2(1, -1)
+texture = ExtResource("1_ce1bs")
+
+[node name="Extra" type="Node2D" parent="."]
+position = Vector2(-200, 0)
+
+[node name="ExtraSprite" type="Sprite2D" parent="Extra"]
+texture = ExtResource("1_ce1bs")
+
+[node name="ExtraButton" type="Sprite2D" parent="Extra"]
+position = Vector2(0, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cpeha")
+
+[node name="Extra2" type="Node2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="ExtraSprite" type="Sprite2D" parent="Extra2"]
+texture = ExtResource("1_ce1bs")
+
+[node name="ExtraButton" type="Sprite2D" parent="Extra2"]
+position = Vector2(0, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cpeha")
+
+[node name="Extra3" type="Node2D" parent="."]
+position = Vector2(200, 0)
+
+[node name="ExtraSprite" type="Sprite2D" parent="Extra3"]
+texture = ExtResource("1_ce1bs")
+
+[node name="ExtraButton" type="Sprite2D" parent="Extra3"]
+position = Vector2(0, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cpeha")
+
+[node name="Extra4" type="Node2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="ExtraSprite" type="Sprite2D" parent="Extra4"]
+texture = ExtResource("1_ce1bs")
+
+[node name="ExtraButton" type="Sprite2D" parent="Extra4"]
+position = Vector2(0, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cpeha")
+
+[node name="MinigameTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("4_c8h27")

@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -27.0
 offset_top = -23.0
 offset_right = 1185.0

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Next_MiniGame_Timer.gd" id="4_5uc8d"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="5_f6n46"]
 [ext_resource type="Texture2D" uid="uid://ck70nmlw3c3ur" path="res://Sprites/Card2.png" id="5_sbe85"]
-[ext_resource type="PackedScene" uid="uid://43srxjcgyb0d" path="res://Scenes/mini_game_typing.tscn" id="7_fg37s"]
+[ext_resource type="PackedScene" uid="uid://1g1j0vqsint1" path="res://Scenes/mini_game_quick_time.tscn" id="7_x18lh"]
 
 [node name="Game" type="Node2D"]
 
@@ -87,4 +87,4 @@ text = "YOU LOSE
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MinigameTypingGame" parent="MiniGameController" instance=ExtResource("7_fg37s")]
+[node name="mini_game_quick_time" parent="MiniGameController" instance=ExtResource("7_x18lh")]
