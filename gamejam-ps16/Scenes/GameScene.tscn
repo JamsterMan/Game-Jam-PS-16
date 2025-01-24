@@ -21,7 +21,7 @@ color = Color(0, 0.396549, 0.399054, 1)
 
 [node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose")]
 script = ExtResource("1_pg6cp")
-minigames = Array[String](["res://Scenes/mini_game_aim_game.tscn", "res://Scenes/mini_game_typing.tscn"])
+minigames = Array[String](["res://Scenes/mini_game_aim_game.tscn", "res://Scenes/mini_game_typing.tscn", "res://Scenes/mini_game_quick_time.tscn"])
 minigame_info_timer = NodePath("MinigameInfoTimer")
 next_minigame_timer = NodePath("NextMinigameTimer")
 minigame_info = NodePath("MinigameInfoTimer/MinigameInfo")
