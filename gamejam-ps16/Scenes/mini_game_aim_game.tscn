@@ -1,14 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://b553lrn1iqdav"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_aim_game.gd" id="1_r3ngn"]
-[ext_resource type="Texture2D" uid="uid://drcf2ml14nas3" path="res://Sprites/Card1.png" id="2_8inmd"]
+[ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="2_bssfn"]
 [ext_resource type="Texture2D" uid="uid://cef2hiojxmf1k" path="res://Sprites/Enemy.png" id="3_08ax4"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="4_rrvqo"]
 [ext_resource type="Texture2D" uid="uid://do26r2t7hfm2q" path="res://Sprites/crosshair.png" id="5_bpjir"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="6_oxthh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnlce"]
-size = Vector2(44, 57)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8q5mn"]
+radius = 15.0
+height = 58.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bp46v"]
 radius = 27.5
@@ -26,13 +27,12 @@ position = Vector2(458, 342)
 [node name="TargetArea" type="Area2D" parent="Target"]
 
 [node name="TargetCollision" type="CollisionShape2D" parent="Target/TargetArea"]
-position = Vector2(2, 0.5)
-shape = SubResource("RectangleShape2D_nnlce")
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_8q5mn")
 
 [node name="TargetSprite" type="Sprite2D" parent="Target"]
-position = Vector2(0, -12)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8inmd")
+scale = Vector2(2, 2)
+texture = ExtResource("2_bssfn")
 
 [node name="Enemy" type="Sprite2D" parent="."]
 position = Vector2(813, 327)

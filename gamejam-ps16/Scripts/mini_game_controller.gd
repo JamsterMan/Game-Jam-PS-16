@@ -20,13 +20,14 @@ func _minigame_timer_timeout():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#start with random minigame
-	#var rng = RandomNumberGenerator.new()
-	#rng.randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	#var minigame_path_index = rng.randi_range(0,minigames.size()-1)
 	#var next_minigame = load(minigames[minigame_path_index])
-	#minigame = next_minigame.instantiate()
-	#add_child(minigame)
-	minigame = get_child(3)
+	var next_minigame = load(minigames[0])
+	
+	minigame = next_minigame.instantiate()
+	add_child(minigame)
 	pass # Replace with function body.
 
 func _minigame_win():
