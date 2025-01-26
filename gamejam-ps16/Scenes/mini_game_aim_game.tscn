@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/mini_game_aim_game.gd" id="1_r3ngn"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="2_bssfn"]
-[ext_resource type="Texture2D" uid="uid://cef2hiojxmf1k" path="res://Sprites/Enemy.png" id="3_08ax4"]
+[ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="3_humtx"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="4_rrvqo"]
 [ext_resource type="Texture2D" uid="uid://do26r2t7hfm2q" path="res://Sprites/crosshair.png" id="5_bpjir"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="6_oxthh"]
@@ -36,18 +36,18 @@ texture = ExtResource("2_bssfn")
 
 [node name="Enemy" type="Sprite2D" parent="."]
 position = Vector2(813, 327)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_08ax4")
+scale = Vector2(2, 2)
+texture = ExtResource("3_humtx")
 
 [node name="Enemy2" type="Sprite2D" parent="."]
 position = Vector2(813, 327)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_08ax4")
+scale = Vector2(2, 2)
+texture = ExtResource("3_humtx")
 
 [node name="Enemy3" type="Sprite2D" parent="."]
 position = Vector2(813, 327)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_08ax4")
+scale = Vector2(2, 2)
+texture = ExtResource("3_humtx")
 
 [node name="Crosshair" type="Area2D" parent="."]
 position = Vector2(615, 347)

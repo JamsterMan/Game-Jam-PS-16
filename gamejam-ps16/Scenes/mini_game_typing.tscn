@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=3 uid="uid://43srxjcgyb0d"]
 
-[ext_resource type="Texture2D" uid="uid://c8a7udy6go8yv" path="res://Sprites/Player.png" id="1_5dvwy"]
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
-[ext_resource type="Texture2D" uid="uid://te2hhkoln3pv" path="res://Sprites/up.png" id="2_e7g2m"]
-[ext_resource type="Texture2D" uid="uid://boa6nvbw4d8wq" path="res://Sprites/down.png" id="3_a0vw8"]
-[ext_resource type="Texture2D" uid="uid://biiqdw3di0er4" path="res://Sprites/right.png" id="4_4ra8d"]
-[ext_resource type="Texture2D" uid="uid://btmklwgoteix" path="res://Sprites/left.png" id="5_03j4l"]
+[ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
+[ext_resource type="Texture2D" uid="uid://1410u5rd0d66" path="res://Sprites/Runes_down1.png" id="3_kvvbt"]
+[ext_resource type="Texture2D" uid="uid://t0buvqd5lj5t" path="res://Sprites/Runes_right1.png" id="4_ol274"]
+[ext_resource type="Texture2D" uid="uid://bqoh0yvemdxv1" path="res://Sprites/Runes_left1.png" id="5_kp8jt"]
+[ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="6_mrv0g"]
+[ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="7_eqcd5"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="7_j4qch"]
-[ext_resource type="Texture2D" uid="uid://drcf2ml14nas3" path="res://Sprites/Card1.png" id="7_kgq2p"]
 
 [node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("buttons_sprites")]
 process_mode = 4
 script = ExtResource("1_mxqhv")
-up_image = ExtResource("2_e7g2m")
-down_image = ExtResource("3_a0vw8")
-right_image = ExtResource("4_4ra8d")
-left_image = ExtResource("5_03j4l")
+up_image = ExtResource("2_uydm4")
+down_image = ExtResource("3_kvvbt")
+right_image = ExtResource("4_ol274")
+left_image = ExtResource("5_kp8jt")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
 
@@ -23,41 +23,41 @@ buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), Nod
 
 [node name="Sprite2D" type="Sprite2D" parent="target"]
 position = Vector2(138, -155)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_5dvwy")
+scale = Vector2(4, 4)
+texture = ExtResource("6_mrv0g")
 
 [node name="Spell" type="Node2D" parent="."]
 position = Vector2(294, 187)
 
 [node name="ButtonOne" type="Sprite2D" parent="Spell"]
 position = Vector2(-256, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_e7g2m")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="ButtonTwo" type="Sprite2D" parent="Spell"]
 position = Vector2(-165, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_e7g2m")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="ButtonThree" type="Sprite2D" parent="Spell"]
 position = Vector2(-76, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_e7g2m")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="ButtonFour" type="Sprite2D" parent="Spell"]
 position = Vector2(13, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_kgq2p")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="ButtonFive" type="Sprite2D" parent="Spell"]
 position = Vector2(102, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_kgq2p")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="ButtonSix" type="Sprite2D" parent="Spell"]
 position = Vector2(191, 81)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_kgq2p")
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
 
 [node name="MinigameTimer" type="Timer" parent="."]
 wait_time = 3.0
