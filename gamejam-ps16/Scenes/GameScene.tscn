@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfu28pq6wuky7"]
+[gd_scene load_steps=9 format=3 uid="uid://cfu28pq6wuky7"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_controller.gd" id="1_pg6cp"]
 [ext_resource type="Texture2D" uid="uid://dhhx8mjg6g4y7" path="res://icon.svg" id="1_yf4bn"]
@@ -6,6 +6,16 @@
 [ext_resource type="Script" path="res://Scripts/Next_MiniGame_Timer.gd" id="4_5uc8d"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="5_f6n46"]
 [ext_resource type="Texture2D" uid="uid://ck70nmlw3c3ur" path="res://Sprites/Card2.png" id="5_sbe85"]
+
+[sub_resource type="Gradient" id="Gradient_bjdik"]
+offsets = PackedFloat32Array(0, 0.992958)
+colors = PackedColorArray(0.636282, 0.102736, 0, 1, 0.52005, 0.268393, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2o1si"]
+gradient = SubResource("Gradient_bjdik")
+width = 1146
+height = 16
+fill_to = Vector2(0.38835, 0)
 
 [node name="Game" type="Node2D"]
 
@@ -16,9 +26,20 @@ offset_right = 611.0
 offset_bottom = 350.0
 color = Color(0, 0.396549, 0.399054, 1)
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MinigameBackground"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 21.0
+offset_right = 1174.0
+offset_bottom = 37.0
+max_value = 3.0
+step = 0.0
+value = 3.0
+texture_progress = SubResource("GradientTexture2D_2o1si")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose")]
+[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose", "minigame_timer_visual")]
 script = ExtResource("1_pg6cp")
 minigames = Array[String](["res://Scenes/mini_game_aim_game.tscn", "res://Scenes/mini_game_typing.tscn", "res://Scenes/mini_game_quick_time.tscn"])
 minigame_info_timer = NodePath("MinigameInfoTimer")
@@ -26,6 +47,7 @@ next_minigame_timer = NodePath("NextMinigameTimer")
 minigame_info = NodePath("MinigameInfoTimer/MinigameInfo")
 minigame_win = NodePath("NextMinigameTimer/MiniGameWin")
 minigame_lose = NodePath("MiniGameLose")
+minigame_timer_visual = NodePath("../MinigameBackground/TextureProgressBar")
 
 [node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
 one_shot = true

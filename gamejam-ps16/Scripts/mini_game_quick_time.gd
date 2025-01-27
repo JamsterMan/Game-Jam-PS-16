@@ -7,6 +7,9 @@ var correct_presses: int = 0
 
 enum button{UP,DOWN,LEFT,RIGHT}
 
+@export var minigame_length : float = 3
+@export var minigame_timer: Timer
+
 @export var target_postions : Array[int] = []
 #max 4
 @export var char_sprites : Array[Sprite2D] = []
@@ -31,10 +34,14 @@ func _ready() -> void:
 	#set position for first button
 	char_sprites[target_postions[0]].texture = char_target
 	_set_next_button()
+	
+	minigame_timer.start(minigame_length)
+	get_parent()._set_minigame_visual_timer(minigame_length)
 
 #converts button ints into button images
 func _set_next_images():
 	if(correct_presses >= presses_needed):
+		char_sprites[target_postions[correct_presses-1]].texture = char_target_hit
 		return
 	for n in char_sprites.size():
 		if(target_postions[correct_presses] == n):
@@ -60,8 +67,6 @@ func _set_target_hit():
 
 func _minigame_timer_timeout():
 	print("Mini game end")
-	print(correct_presses)
-	print(presses_needed)
 	if(correct_presses >= presses_needed):
 		print("Mini game win")
 		get_parent()._minigame_win()
@@ -77,3 +82,4 @@ func _process(_delta: float) -> void:
 			correct_presses += 1
 			_set_next_button()
 			_set_next_images()
+				

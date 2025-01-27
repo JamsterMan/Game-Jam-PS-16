@@ -6,12 +6,16 @@ extends Node2D
 @export var minigame_info: TextureRect
 @export var minigame_win: TextureRect
 @export var minigame_lose: TextureRect
+@export var minigame_timer_visual: TextureProgressBar
+
 var minigame
+var last_minigame_path_index: int = 0
+var start_visual_timer: bool = false
+var time_past: float = 0
 
 func _minigame_timer_timeout():
 	print("Mini game start")
 	#hide info screen
-	#minigame_info_timer._hide_info()
 	minigame_info.set_visible(false)
 	#show and activate minigame
 	minigame.set_visible(true)
@@ -22,9 +26,9 @@ func _ready() -> void:
 	#start with random minigame
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	#var minigame_path_index = rng.randi_range(0,minigames.size()-1)
-	#var next_minigame = load(minigames[minigame_path_index])
-	var next_minigame = load(minigames[2])
+	last_minigame_path_index = rng.randi_range(0,minigames.size()-1)
+	var next_minigame = load(minigames[last_minigame_path_index])
+	#var next_minigame = load(minigames[2])
 	
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
@@ -45,6 +49,10 @@ func _next_minigame_timer_timeout():
 	print("Next minigame loading")
 	_reset_minigame()
 
+func _next_minigame(num:int):
+	if(num >= last_minigame_path_index):
+		minigame
+
 func _reset_minigame():
 	minigame_win.set_visible(false)
 	#set up minigame info screen
@@ -56,9 +64,28 @@ func _reset_minigame():
 	#choose game at semi random - try not to repeat games
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var minigame_path_index = rng.randi_range(0,minigames.size()-1)
+	#0, size()-2 -> -2 to prevent repeat games
+	var minigame_path_index = rng.randi_range(0,minigames.size()-2)
+	if(minigame_path_index >= last_minigame_path_index):
+		minigame_path_index += 1
+	last_minigame_path_index = minigame_path_index
 	var next_minigame = load(minigames[minigame_path_index])
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
 
 #func _set_minigame_info(string?):
+
+func _set_minigame_visual_timer(time:int):
+	minigame_timer_visual.max_value = time
+	minigame_timer_visual.value = time
+	time_past = 0
+	start_visual_timer = true
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if(start_visual_timer):
+		time_past += delta
+		if(time_past >= 0.5):
+			print(time_past)
+			time_past -= 0.5
+			minigame_timer_visual.value -= 0.5

@@ -5,15 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="3_h1e52"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="4_47cbh"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="4_c8h27"]
-[ext_resource type="Texture2D" uid="uid://bqoh0yvemdxv1" path="res://Sprites/Runes_left1.png" id="5_8ea4a"]
 [ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="5_8k7on"]
-[ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="6_nexcw"]
-[ext_resource type="Texture2D" uid="uid://t0buvqd5lj5t" path="res://Sprites/Runes_right1.png" id="7_8w3k5"]
-[ext_resource type="Texture2D" uid="uid://1410u5rd0d66" path="res://Sprites/Runes_down1.png" id="8_hjyxe"]
+[ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="6_34nag"]
+[ext_resource type="Texture2D" uid="uid://485us4kx02t" path="res://Sprites/Runes_up2.png" id="7_mu0t8"]
+[ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_ok01q"]
+[ext_resource type="Texture2D" uid="uid://on3thud87cwq" path="res://Sprites/Runes_down2.png" id="9_02sor"]
 
-[node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("char_sprites", "target_sprites")]
+[node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("minigame_timer", "char_sprites", "target_sprites")]
 process_mode = 4
 script = ExtResource("1_khvof")
+minigame_timer = NodePath("MinigameTimer")
 target_postions = Array[int]([0, 0, 0, 0, 0, 0])
 char_sprites = [NodePath("Extra2/ExtraSprite2"), NodePath("Extra4/ExtraSprite4"), NodePath("Extra/ExtraSprite"), NodePath("Extra3/ExtraSprite3")]
 target_sprites = [NodePath("Targets/TargetOne"), NodePath("Targets/TargetTwo"), NodePath("Targets/TargetThree"), NodePath("Targets/TargetFour"), NodePath("Targets/TargetFive")]
@@ -46,7 +47,7 @@ texture = ExtResource("3_h1e52")
 [node name="ExtraButton" type="Sprite2D" parent="Extra"]
 position = Vector2(0, 60)
 scale = Vector2(3, 3)
-texture = ExtResource("5_8ea4a")
+texture = ExtResource("6_34nag")
 
 [node name="Extra2" type="Node2D" parent="."]
 position = Vector2(0, -200)
@@ -58,7 +59,7 @@ texture = ExtResource("3_h1e52")
 [node name="ExtraButton" type="Sprite2D" parent="Extra2"]
 position = Vector2(0, 60)
 scale = Vector2(3, 3)
-texture = ExtResource("6_nexcw")
+texture = ExtResource("7_mu0t8")
 
 [node name="Extra3" type="Node2D" parent="."]
 position = Vector2(200, 0)
@@ -70,7 +71,7 @@ texture = ExtResource("3_h1e52")
 [node name="ExtraButton" type="Sprite2D" parent="Extra3"]
 position = Vector2(0, 60)
 scale = Vector2(3, 3)
-texture = ExtResource("7_8w3k5")
+texture = ExtResource("8_ok01q")
 
 [node name="Extra4" type="Node2D" parent="."]
 position = Vector2(0, 200)
@@ -82,7 +83,7 @@ texture = ExtResource("3_h1e52")
 [node name="ExtraButton" type="Sprite2D" parent="Extra4"]
 position = Vector2(0, 60)
 scale = Vector2(3, 3)
-texture = ExtResource("8_hjyxe")
+texture = ExtResource("9_02sor")
 
 [node name="Targets" type="Node2D" parent="."]
 position = Vector2(-275, 204)

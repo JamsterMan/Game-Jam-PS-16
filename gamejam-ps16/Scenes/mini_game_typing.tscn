@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=14 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
@@ -12,8 +12,9 @@
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="7_j4qch"]
 [ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_q0aww"]
 [ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="9_ppldq"]
+[ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="10_o5hs5"]
 
-[node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("buttons_sprites")]
+[node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("char_sprite", "minigame_timer", "buttons_sprites")]
 process_mode = 4
 script = ExtResource("1_mxqhv")
 up_image = ExtResource("2_uydm4")
@@ -24,6 +25,9 @@ up_image_pressed = ExtResource("6_wt8a0")
 down_image_pressed = ExtResource("7_741b8")
 right_image_pressed = ExtResource("8_q0aww")
 left_image_pressed = ExtResource("9_ppldq")
+char_sprite = NodePath("target/Sprite2D")
+char_target_hit = ExtResource("10_o5hs5")
+minigame_timer = NodePath("MinigameTimer")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
 

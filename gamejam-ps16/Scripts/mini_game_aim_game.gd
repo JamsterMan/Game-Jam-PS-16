@@ -2,8 +2,8 @@ extends Node2D
 
 @export var person_count : int = 4
 @export var minigame_length : float = 3
-@export var target_area : Area2D
 @export var minigame_timer: Timer
+@export var target_area : Area2D
 
 func _minigame_timer_timeout():
 	print("Mini game end")
@@ -18,6 +18,7 @@ func _minigame_timer_timeout():
 func _ready() -> void:
 	#set minigame info here
 	minigame_timer.start(minigame_length)
+	get_parent()._set_minigame_visual_timer(minigame_length)
 	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

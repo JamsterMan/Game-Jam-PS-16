@@ -14,12 +14,12 @@ height = 58.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bp46v"]
 radius = 27.5
 
-[node name="MiniGameAimGame" type="Node2D" node_paths=PackedStringArray("target_area", "minigame_timer")]
+[node name="MiniGameAimGame" type="Node2D" node_paths=PackedStringArray("minigame_timer", "target_area")]
 process_mode = 4
 position = Vector2(-614, -349)
 script = ExtResource("1_r3ngn")
-target_area = NodePath("Target/TargetArea")
 minigame_timer = NodePath("MinigameTimer")
+target_area = NodePath("Target/TargetArea")
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(458, 342)

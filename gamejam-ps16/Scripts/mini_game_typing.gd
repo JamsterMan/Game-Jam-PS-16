@@ -12,6 +12,12 @@ extends Node2D
 
 enum button{UP,DOWN,LEFT,RIGHT}
 
+@export var char_sprite : Sprite2D
+@export var char_target_hit: Texture2D
+
+@export var minigame_length : float = 3
+@export var minigame_timer: Timer
+
 @export var buttons : Array[int] = []
 @export var buttons_sprites : Array[Sprite2D] = []
 
@@ -31,6 +37,9 @@ func _ready() -> void:
 		buttons[n] = rng.randi_range(0,3)
 		buttons_sprites[n].texture = _set_button_images(buttons[n])
 	_set_next_button()
+	
+	minigame_timer.start(minigame_length)
+	get_parent()._set_minigame_visual_timer(minigame_length)
 
 #converts button ints into button images
 func _set_button_images(num:int) -> Texture2D:
@@ -45,6 +54,7 @@ func _set_button_images(num:int) -> Texture2D:
 #converts button ints into strings for input collection
 func _set_next_button():
 	if(correct_button_presses >= button_count):
+		char_sprite.texture = char_target_hit
 		return
 	if(buttons[correct_button_presses] == button.UP):
 		next_button = "move_up"
