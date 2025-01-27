@@ -49,10 +49,6 @@ func _next_minigame_timer_timeout():
 	print("Next minigame loading")
 	_reset_minigame()
 
-func _next_minigame(num:int):
-	if(num >= last_minigame_path_index):
-		minigame
-
 func _reset_minigame():
 	minigame_win.set_visible(false)
 	#set up minigame info screen
