@@ -24,7 +24,7 @@ func _ready() -> void:
 	rng.randomize()
 	#var minigame_path_index = rng.randi_range(0,minigames.size()-1)
 	#var next_minigame = load(minigames[minigame_path_index])
-	var next_minigame = load(minigames[0])
+	var next_minigame = load(minigames[2])
 	
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
@@ -37,6 +37,8 @@ func _minigame_win():
 
 func _minigame_lose():
 	minigame_lose.set_visible(true)
+	minigame.set_visible(false)
+	minigame.set_process_mode(PROCESS_MODE_DISABLED)
 	#game over
 
 func _next_minigame_timer_timeout():

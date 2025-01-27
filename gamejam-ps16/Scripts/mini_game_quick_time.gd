@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var min_presses: int = 3
-@export var max_presses: int = 6
+@export var min_presses: int = 2
+@export var max_presses: int = 5
 var presses_needed: int = 3
 var correct_presses: int = 0
 
@@ -10,9 +10,11 @@ enum button{UP,DOWN,LEFT,RIGHT}
 @export var target_postions : Array[int] = []
 #max 4
 @export var char_sprites : Array[Sprite2D] = []
+@export var target_sprites : Array[Sprite2D] = []
 
 @export var char_target: Texture2D
 @export var char_fake: Texture2D
+@export var char_target_hit: Texture2D
 
 var next_button : String = "move_up"
 
@@ -25,10 +27,10 @@ func _ready() -> void:
 	#set buttons for each round
 	for n in presses_needed:
 		target_postions[n] = rng.randi_range(0,3)
+		target_sprites[n].texture = char_target
 	#set position for first button
 	char_sprites[target_postions[0]].texture = char_target
 	_set_next_button()
-	print(next_button)
 
 #converts button ints into button images
 func _set_next_images():
@@ -53,6 +55,9 @@ func _set_next_button():
 	else:
 		next_button = "move_left"
 
+func _set_target_hit():
+	target_sprites[correct_presses].texture = char_target_hit
+
 func _minigame_timer_timeout():
 	print("Mini game end")
 	print(correct_presses)
@@ -68,7 +73,7 @@ func _minigame_timer_timeout():
 func _process(_delta: float) -> void:
 	if(correct_presses < presses_needed):
 		if(Input.is_action_just_pressed(next_button)):
-			print(next_button)
+			_set_target_hit()
 			correct_presses += 1
 			_set_next_button()
 			_set_next_images()

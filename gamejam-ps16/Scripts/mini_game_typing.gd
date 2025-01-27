@@ -5,6 +5,11 @@ extends Node2D
 @export var right_image: Texture2D
 @export var left_image: Texture2D
 
+@export var up_image_pressed: Texture2D
+@export var down_image_pressed: Texture2D
+@export var right_image_pressed: Texture2D
+@export var left_image_pressed: Texture2D
+
 enum button{UP,DOWN,LEFT,RIGHT}
 
 @export var buttons : Array[int] = []
@@ -50,6 +55,16 @@ func _set_next_button():
 	else:
 		next_button = "move_left"
 
+func _set_pressed_button():
+	if(next_button == "move_up"):
+		buttons_sprites[correct_button_presses].texture = up_image_pressed
+	elif(next_button == "move_down"):
+		buttons_sprites[correct_button_presses].texture = down_image_pressed
+	elif(next_button == "move_right"):
+		buttons_sprites[correct_button_presses].texture = right_image_pressed
+	else:
+		buttons_sprites[correct_button_presses].texture = left_image_pressed
+
 func _minigame_timer_timeout():
 	print("Mini game end")
 	if(correct_button_presses == button_count):
@@ -63,6 +78,7 @@ func _minigame_timer_timeout():
 func _process(_delta: float) -> void:
 	if(correct_button_presses < button_count):
 		if(Input.is_action_just_pressed(next_button)):
-			print(next_button)
+			_set_pressed_button()
 			correct_button_presses += 1
 			_set_next_button()
+			#check if game done -> change sprite

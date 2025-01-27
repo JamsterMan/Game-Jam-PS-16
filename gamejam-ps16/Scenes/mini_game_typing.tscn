@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=13 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://t0buvqd5lj5t" path="res://Sprites/Runes_right1.png" id="4_ol274"]
 [ext_resource type="Texture2D" uid="uid://bqoh0yvemdxv1" path="res://Sprites/Runes_left1.png" id="5_kp8jt"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="6_mrv0g"]
+[ext_resource type="Texture2D" uid="uid://485us4kx02t" path="res://Sprites/Runes_up2.png" id="6_wt8a0"]
+[ext_resource type="Texture2D" uid="uid://on3thud87cwq" path="res://Sprites/Runes_down2.png" id="7_741b8"]
 [ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="7_eqcd5"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="7_j4qch"]
+[ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_q0aww"]
+[ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="9_ppldq"]
 
 [node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("buttons_sprites")]
 process_mode = 4
@@ -16,6 +20,10 @@ up_image = ExtResource("2_uydm4")
 down_image = ExtResource("3_kvvbt")
 right_image = ExtResource("4_ol274")
 left_image = ExtResource("5_kp8jt")
+up_image_pressed = ExtResource("6_wt8a0")
+down_image_pressed = ExtResource("7_741b8")
+right_image_pressed = ExtResource("8_q0aww")
+left_image_pressed = ExtResource("9_ppldq")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
 

@@ -1,22 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://1g1j0vqsint1"]
+[gd_scene load_steps=11 format=3 uid="uid://1g1j0vqsint1"]
 
-[ext_resource type="Texture2D" uid="uid://dhhx8mjg6g4y7" path="res://icon.svg" id="1_ce1bs"]
 [ext_resource type="Script" path="res://Scripts/mini_game_quick_time.gd" id="1_khvof"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="2_svijv"]
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="3_h1e52"]
+[ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="4_47cbh"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="4_c8h27"]
 [ext_resource type="Texture2D" uid="uid://bqoh0yvemdxv1" path="res://Sprites/Runes_left1.png" id="5_8ea4a"]
+[ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="5_8k7on"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="6_nexcw"]
 [ext_resource type="Texture2D" uid="uid://t0buvqd5lj5t" path="res://Sprites/Runes_right1.png" id="7_8w3k5"]
 [ext_resource type="Texture2D" uid="uid://1410u5rd0d66" path="res://Sprites/Runes_down1.png" id="8_hjyxe"]
 
-[node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("char_sprites")]
+[node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("char_sprites", "target_sprites")]
 process_mode = 4
 script = ExtResource("1_khvof")
 target_postions = Array[int]([0, 0, 0, 0, 0, 0])
 char_sprites = [NodePath("Extra2/ExtraSprite2"), NodePath("Extra4/ExtraSprite4"), NodePath("Extra/ExtraSprite"), NodePath("Extra3/ExtraSprite3")]
+target_sprites = [NodePath("Targets/TargetOne"), NodePath("Targets/TargetTwo"), NodePath("Targets/TargetThree"), NodePath("Targets/TargetFour"), NodePath("Targets/TargetFive")]
 char_target = ExtResource("2_svijv")
 char_fake = ExtResource("3_h1e52")
+char_target_hit = ExtResource("4_47cbh")
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
 visible = false
@@ -30,7 +33,8 @@ color = Color(0, 0.396549, 0.399054, 1)
 
 [node name="Caracter" type="Sprite2D" parent="Target"]
 position = Vector2(1, -1)
-texture = ExtResource("1_ce1bs")
+scale = Vector2(4, 4)
+texture = ExtResource("5_8k7on")
 
 [node name="Extra" type="Node2D" parent="."]
 position = Vector2(-200, 0)
@@ -79,6 +83,34 @@ texture = ExtResource("3_h1e52")
 position = Vector2(0, 60)
 scale = Vector2(3, 3)
 texture = ExtResource("8_hjyxe")
+
+[node name="Targets" type="Node2D" parent="."]
+position = Vector2(-275, 204)
+
+[node name="TargetOne" type="Sprite2D" parent="Targets"]
+position = Vector2(-210, 81)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8k7on")
+
+[node name="TargetTwo" type="Sprite2D" parent="Targets"]
+position = Vector2(-140, 81)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8k7on")
+
+[node name="TargetThree" type="Sprite2D" parent="Targets"]
+position = Vector2(-70, 81)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8k7on")
+
+[node name="TargetFour" type="Sprite2D" parent="Targets"]
+position = Vector2(0, 81)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8k7on")
+
+[node name="TargetFive" type="Sprite2D" parent="Targets"]
+position = Vector2(70, 81)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8k7on")
 
 [node name="MinigameTimer" type="Timer" parent="."]
 wait_time = 3.0
