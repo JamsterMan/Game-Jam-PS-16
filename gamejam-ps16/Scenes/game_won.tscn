@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsg52at2d4v78" path="res://Sprites/Player_Happy.png" id="1_kyijl"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="2_25123"]
-[ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="3_hw104"]
+[ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="3_e7e1y"]
 
 [node name="GameWon" type="Control"]
 layout_mode = 3
@@ -57,4 +57,4 @@ offset_top = 420.0
 offset_right = 140.0
 offset_bottom = 460.0
 scale = Vector2(4, 4)
-texture = ExtResource("3_hw104")
+texture = ExtResource("3_e7e1y")

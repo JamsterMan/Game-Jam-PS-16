@@ -73,6 +73,7 @@ script = ExtResource("4_rrvqo")
 aim_speed = 300
 
 [node name="CrosshairSprite" type="Sprite2D" parent="Crosshair"]
+scale = Vector2(4, 4)
 texture = ExtResource("5_bpjir")
 
 [node name="CrosshairCollision" type="CollisionShape2D" parent="Crosshair"]

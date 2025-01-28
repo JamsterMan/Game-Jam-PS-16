@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b60aackbw5mmd"]
+[gd_scene load_steps=10 format=3 uid="uid://b60aackbw5mmd"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_50c3h"]
 [ext_resource type="Texture2D" uid="uid://dmapyu46sj31d" path="res://Sprites/Player_normal.png" id="1_qy8be"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="3_quacq"]
 [ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="4_kkafa"]
 [ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="5_k22i5"]
+[ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="6_d33cg"]
 [ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="6_gwdj8"]
 
 [node name="MainMenu" type="Control"]
@@ -105,7 +106,7 @@ offset_top = 440.0
 offset_right = 690.0
 offset_bottom = 480.0
 scale = Vector2(2, 2)
-texture = ExtResource("2_npqms")
+texture = ExtResource("6_d33cg")
 
 [node name="Sword" type="TextureRect" parent="."]
 layout_mode = 0
