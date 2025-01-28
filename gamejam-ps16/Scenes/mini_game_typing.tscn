@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=15 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_q0aww"]
 [ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="9_ppldq"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="10_o5hs5"]
+[ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="11_of66i"]
 
 [node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("char_sprite", "minigame_timer", "buttons_sprites")]
 process_mode = 4
@@ -30,6 +31,25 @@ char_target_hit = ExtResource("10_o5hs5")
 minigame_timer = NodePath("MinigameTimer")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
+
+[node name="MinigameBackground" type="ColorRect" parent="."]
+visible = false
+offset_left = -600.0
+offset_top = -350.0
+offset_right = 600.0
+offset_bottom = 350.0
+color = Color(0, 0.396549, 0.399054, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 693)
+offset_left = -600.0
+offset_top = -350.0
+offset_right = 600.0
+offset_bottom = 350.0
+scale = Vector2(2, 2)
+texture = ExtResource("11_of66i")
+stretch_mode = 1
 
 [node name="target" type="Node2D" parent="."]
 

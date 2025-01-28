@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnsfb0tk3cf58"]
+
+[ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="1_1c3jj"]
+[ext_resource type="Script" path="res://Scripts/game_info.gd" id="1_k5bpe"]
+[ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="2_nauda"]
+[ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="4_2djcu"]
+
+[sub_resource type="Animation" id="Animation_jjdrj"]
+resource_name = "minigame_info_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Save The Princess", "Savl The Princess", "Sivl The Princess", "Sill The Princess", "Kill The Princess"]
+}
+
+[sub_resource type="Animation" id="Animation_dxyle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Save The Princess"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jjhl"]
+_data = {
+"RESET": SubResource("Animation_dxyle"),
+"minigame_info_animation": SubResource("Animation_jjdrj")
+}
+
+[node name="GameInfo" type="Control" node_paths=PackedStringArray("weapon_sprite", "animation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5bpe")
+weapons = Array[Texture2D]([ExtResource("2_nauda"), ExtResource("1_1c3jj"), ExtResource("4_2djcu")])
+weapon_sprite = NodePath("Label/WeaponSprite")
+animation = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2jjhl")
+}
+autoplay = "minigame_info_animation"
+
+[node name="MinigameBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.023
+anchor_top = -0.035
+anchor_right = 1.029
+anchor_bottom = 1.034
+offset_left = 1.496
+offset_top = -2.32
+offset_right = -10.4081
+offset_bottom = 4.96796
+color = Color(1.74474e-07, 0.149698, 0.150834, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 73.0
+offset_right = 1152.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 100
+text = "Save The Princess"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeaponSprite" type="TextureRect" parent="Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.328
+anchor_top = 0.756
+anchor_right = 0.606
+anchor_bottom = 2.178
+offset_left = 0.471954
+offset_top = -0.100021
+offset_right = -287.506
+offset_bottom = -288.05
+scale = Vector2(10, 10)
+texture = ExtResource("1_1c3jj")

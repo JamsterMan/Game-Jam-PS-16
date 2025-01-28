@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b60aackbw5mmd"]
+[gd_scene load_steps=9 format=3 uid="uid://b60aackbw5mmd"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_50c3h"]
+[ext_resource type="Texture2D" uid="uid://dmapyu46sj31d" path="res://Sprites/Player_normal.png" id="1_qy8be"]
+[ext_resource type="Texture2D" uid="uid://odtm2yuqcnet" path="res://Sprites/Player_sad.png" id="2_jethh"]
+[ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="2_npqms"]
+[ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="3_quacq"]
+[ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="4_kkafa"]
+[ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="5_k22i5"]
+[ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="6_gwdj8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,14 +25,32 @@ offset_right = 1185.0
 offset_bottom = 670.0
 color = Color(0, 0.396549, 0.399054, 1)
 
+[node name="Player" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 104.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_qy8be")
+
+[node name="PlayerSad" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 1.0
+offset_right = 1052.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_jethh")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 265.0
-offset_top = 121.0
-offset_right = 870.0
-offset_bottom = 258.0
+offset_top = 100.0
+offset_right = 1150.0
+offset_bottom = 250.0
 theme_override_font_sizes/font_size = 100
-text = "Game Name"
+text = "Sabotage the Hero"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
@@ -36,3 +61,75 @@ offset_bottom = 378.0
 theme_override_font_sizes/font_size = 60
 text = "PLAY"
 script = ExtResource("1_50c3h")
+
+[node name="Player2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 840.0
+offset_bottom = 490.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_qy8be")
+
+[node name="Orc" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 440.0
+offset_right = 140.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_npqms")
+
+[node name="Princess" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 440.0
+offset_right = 240.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_quacq")
+
+[node name="Orc 2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 440.0
+offset_right = 340.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_npqms")
+
+[node name="Hero" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 440.0
+offset_right = 690.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_npqms")
+
+[node name="Sword" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 440.0
+offset_right = 770.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_kkafa")
+
+[node name="Bow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 500.0
+offset_right = 840.0
+offset_bottom = 540.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_k22i5")
+
+[node name="Staff" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 440.0
+offset_right = 915.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_gwdj8")
