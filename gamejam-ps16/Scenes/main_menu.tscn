@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b60aackbw5mmd"]
+[gd_scene load_steps=11 format=3 uid="uid://b60aackbw5mmd"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_50c3h"]
 [ext_resource type="Texture2D" uid="uid://dmapyu46sj31d" path="res://Sprites/Player_normal.png" id="1_qy8be"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="2_npqms"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="3_quacq"]
 [ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="4_kkafa"]
+[ext_resource type="AudioStream" uid="uid://bxboycoqnm11f" path="res://Audio/Button Press.wav" id="4_o6sqc"]
 [ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="5_k22i5"]
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="6_d33cg"]
 [ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="6_gwdj8"]
@@ -53,7 +54,7 @@ text = "Sabotage the Hero"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="." node_paths=PackedStringArray("sound_effects")]
 layout_mode = 0
 offset_left = 265.0
 offset_top = 287.0
@@ -62,6 +63,11 @@ offset_bottom = 378.0
 theme_override_font_sizes/font_size = 60
 text = "PLAY"
 script = ExtResource("1_50c3h")
+sound_effects = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayButton"]
+stream = ExtResource("4_o6sqc")
+volume_db = -5.0
 
 [node name="Player2" type="TextureRect" parent="."]
 layout_mode = 0

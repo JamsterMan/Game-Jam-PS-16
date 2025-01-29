@@ -9,6 +9,7 @@ func _minigame_timer_timeout():
 	print("Mini game end")
 	if(target_area.has_overlapping_areas() ):
 		print("Mini game win")
+		get_parent()._death_sound()
 		get_parent()._minigame_win()
 	else:
 		print("Mini game lose")

@@ -1,11 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfu28pq6wuky7"]
+[gd_scene load_steps=17 format=3 uid="uid://cfu28pq6wuky7"]
 
+[ext_resource type="AudioStream" uid="uid://blb4x7pka3owa" path="res://Audio/Orc Noise.wav" id="1_dc58e"]
 [ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="1_e6apx"]
 [ext_resource type="AudioStream" uid="uid://b84mnhsnhqjs6" path="res://Audio/YOINKY SPLOINKY type beat.mp3" id="1_hnen8"]
 [ext_resource type="Script" path="res://Scripts/mini_game_controller.gd" id="1_pg6cp"]
+[ext_resource type="AudioStream" uid="uid://dphx20gg15bkd" path="res://Audio/Death Noise.wav" id="2_8736h"]
+[ext_resource type="Script" path="res://Scripts/sounds.gd" id="3_ef30l"]
 [ext_resource type="Script" path="res://Scripts/Next_MiniGame_Timer.gd" id="4_5uc8d"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="5_f6n46"]
 [ext_resource type="PackedScene" uid="uid://dnsfb0tk3cf58" path="res://Scenes/game_info.tscn" id="5_jfrqs"]
+[ext_resource type="AudioStream" uid="uid://bifimf0o2ifpg" path="res://Audio/Sword Sound Effect.wav" id="5_y1xhr"]
+[ext_resource type="AudioStream" uid="uid://bkylb54cq6ub2" path="res://Audio/Magic Sound Effect.wav" id="6_6xo85"]
+[ext_resource type="AudioStream" uid="uid://bxboycoqnm11f" path="res://Audio/Button Press.wav" id="7_dni82"]
 [ext_resource type="PackedScene" uid="uid://qn48ypmsva8n" path="res://Scenes/game_won.tscn" id="7_w7ahk"]
 [ext_resource type="PackedScene" uid="uid://b6jcnj36x7l5p" path="res://Scenes/game_lost.tscn" id="10_jiaq0"]
 
@@ -23,9 +29,25 @@ fill_to = Vector2(0.38835, 0)
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_hnen8")
-volume_db = -10.0
+volume_db = -12.0
 autoplay = true
 parameters/looping = true
+
+[node name="SoundsAmbient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dc58e")
+volume_db = -22.0
+autoplay = true
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dni82")
+autoplay = true
+max_polyphony = 3
+script = ExtResource("3_ef30l")
+death_sound = ExtResource("2_8736h")
+sword_sound = ExtResource("5_y1xhr")
+magic_sound = ExtResource("6_6xo85")
+button_sound = ExtResource("7_dni82")
+volume = -15.0
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
 offset_left = -600.0
@@ -57,7 +79,7 @@ texture_progress = SubResource("GradientTexture2D_2o1si")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose", "minigame_timer_visual")]
+[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose", "minigame_timer_visual", "sound_effects")]
 script = ExtResource("1_pg6cp")
 minigames = Array[String](["res://Scenes/mini_game_aim_game.tscn", "res://Scenes/mini_game_typing.tscn", "res://Scenes/mini_game_quick_time.tscn"])
 minigame_info_timer = NodePath("MinigameInfoTimer")
@@ -66,6 +88,7 @@ minigame_info = NodePath("MinigameInfoTimer/GameInfo")
 minigame_win = NodePath("NextMinigameTimer/GameWon")
 minigame_lose = NodePath("NextMinigameTimer/GameLost")
 minigame_timer_visual = NodePath("../MinigameBackgroundTexture/TextureProgressBar")
+sound_effects = NodePath("../Sounds")
 
 [node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
 wait_time = 1.5

@@ -24,9 +24,11 @@ enum button{UP,DOWN,LEFT,RIGHT}
 var next_button : String = "move_up"
 var correct_button_presses: int = 0
 var button_count: int = 0
+var parent: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	parent = get_parent()
 	#set string to random variables
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -39,7 +41,7 @@ func _ready() -> void:
 	_set_next_button()
 	
 	minigame_timer.start(minigame_length)
-	get_parent()._set_minigame_visual_timer(minigame_length)
+	parent._set_minigame_visual_timer(minigame_length)
 
 #converts button ints into button images
 func _set_button_images(num:int) -> Texture2D:
@@ -53,7 +55,11 @@ func _set_button_images(num:int) -> Texture2D:
 
 #converts button ints into strings for input collection
 func _set_next_button():
+	#change target image here to stop dulicate code
 	if(correct_button_presses >= button_count):
+		parent._magic_sound()
+		#play death sound after animation
+		parent._death_sound()
 		char_sprite.texture = char_target_hit
 		return
 	if(buttons[correct_button_presses] == button.UP):
@@ -79,10 +85,10 @@ func _minigame_timer_timeout():
 	print("Mini game end")
 	if(correct_button_presses == button_count):
 		print("Mini game win")
-		get_parent()._minigame_win()
+		parent._minigame_win()
 	else:
 		print("Mini game lose")
-		get_parent()._minigame_lose()
+		parent._minigame_lose()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

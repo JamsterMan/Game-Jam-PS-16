@@ -7,6 +7,7 @@ extends Node2D
 @export var minigame_win: Control
 @export var minigame_lose: Control
 @export var minigame_timer_visual: TextureProgressBar
+@export var sound_effects: AudioStreamPlayer
 
 var minigame
 var last_minigame_path_index: int = 0
@@ -31,6 +32,7 @@ func _ready() -> void:
 	var next_minigame = load(minigames[last_minigame_path_index])
 	#var next_minigame = load(minigames[2])
 	minigame_info._set_weapon_image(last_minigame_path_index)
+	#set minigame backgorund
 	
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
@@ -88,3 +90,12 @@ func _process(delta: float) -> void:
 		if(time_past >= 0.05):
 			time_past -= 0.05
 			minigame_timer_visual.value -= 0.05
+
+func _death_sound():
+	sound_effects._play_death_sound()
+
+func _sword_sound():
+	sound_effects._play_sword_sound()
+
+func _magic_sound():
+	sound_effects._play_magic_sound()

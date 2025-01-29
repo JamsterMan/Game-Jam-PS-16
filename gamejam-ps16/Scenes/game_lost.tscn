@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6jcnj36x7l5p"]
+[gd_scene load_steps=6 format=3 uid="uid://b6jcnj36x7l5p"]
 
 [ext_resource type="Script" path="res://Scripts/game_lost.gd" id="1_buuc4"]
+[ext_resource type="AudioStream" uid="uid://bxboycoqnm11f" path="res://Audio/Button Press.wav" id="1_y20s3"]
 [ext_resource type="Texture2D" uid="uid://odtm2yuqcnet" path="res://Sprites/Player_sad.png" id="2_y5uci"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="3_idekr"]
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="4_jjsa2"]
@@ -37,7 +38,7 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="Label"]
+[node name="PlayButton" type="Button" parent="Label" node_paths=PackedStringArray("sound_effects")]
 layout_mode = 0
 offset_left = 281.0
 offset_top = 191.0
@@ -46,6 +47,11 @@ offset_bottom = 282.0
 theme_override_font_sizes/font_size = 60
 text = "Main Menu"
 script = ExtResource("1_buuc4")
+sound_effects = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Label/PlayButton"]
+stream = ExtResource("1_y20s3")
+volume_db = -5.0
 
 [node name="SadPlayer" type="TextureRect" parent="."]
 layout_mode = 0

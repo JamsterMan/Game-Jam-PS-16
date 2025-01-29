@@ -20,9 +20,11 @@ enum button{UP,DOWN,LEFT,RIGHT}
 @export var char_target_hit: Texture2D
 
 var next_button : String = "move_up"
+var parent: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	parent = get_parent()
 	#set string to random variables
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -42,6 +44,7 @@ func _ready() -> void:
 func _set_next_images():
 	if(correct_presses >= presses_needed):
 		char_sprites[target_postions[correct_presses-1]].texture = char_target_hit
+		parent._death_sound()
 		return
 	for n in char_sprites.size():
 		if(target_postions[correct_presses] == n):
@@ -64,6 +67,7 @@ func _set_next_button():
 
 func _set_target_hit():
 	target_sprites[correct_presses].texture = char_target_hit
+	parent._sword_sound()
 
 func _minigame_timer_timeout():
 	print("Mini game end")
