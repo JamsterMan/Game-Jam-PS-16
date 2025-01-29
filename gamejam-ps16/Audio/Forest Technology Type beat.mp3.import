@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daexaljomptxi"
+path="res://.godot/imported/Forest Technology Type beat.mp3-d626a6193ed9b036906bce2ecb9c715a.mp3str"
+
+[deps]
+
+source_file="res://Audio/Forest Technology Type beat.mp3"
+dest_files=["res://.godot/imported/Forest Technology Type beat.mp3-d626a6193ed9b036906bce2ecb9c715a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

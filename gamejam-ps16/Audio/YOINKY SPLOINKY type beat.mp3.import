@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b84mnhsnhqjs6"
+path="res://.godot/imported/YOINKY SPLOINKY type beat.mp3-f275942d377032ff94888afb8e48c4b0.mp3str"
+
+[deps]
+
+source_file="res://Audio/YOINKY SPLOINKY type beat.mp3"
+dest_files=["res://.godot/imported/YOINKY SPLOINKY type beat.mp3-f275942d377032ff94888afb8e48c4b0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
