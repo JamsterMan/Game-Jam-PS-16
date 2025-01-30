@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=17 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="9_ppldq"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="10_o5hs5"]
 [ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="11_of66i"]
+[ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="13_aepvl"]
+[ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="15_utdsf"]
 
 [node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("char_sprite", "minigame_timer", "buttons_sprites")]
 process_mode = 4
@@ -26,14 +28,14 @@ up_image_pressed = ExtResource("6_wt8a0")
 down_image_pressed = ExtResource("7_741b8")
 right_image_pressed = ExtResource("8_q0aww")
 left_image_pressed = ExtResource("9_ppldq")
-char_sprite = NodePath("target/Sprite2D")
+char_sprite = NodePath("target/Target")
 char_target_hit = ExtResource("10_o5hs5")
+min_minigame_length = 1.8
 minigame_timer = NodePath("MinigameTimer")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
-visible = false
 offset_left = -600.0
 offset_top = -350.0
 offset_right = 600.0
@@ -53,10 +55,30 @@ stretch_mode = 1
 
 [node name="target" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="target"]
-position = Vector2(138, -155)
+[node name="Target" type="Sprite2D" parent="target"]
+position = Vector2(149, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("6_mrv0g")
+
+[node name="Orc" type="Sprite2D" parent="target"]
+position = Vector2(290, -63)
+scale = Vector2(4, 4)
+texture = ExtResource("13_aepvl")
+
+[node name="Orc2" type="Sprite2D" parent="target"]
+position = Vector2(-2, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("13_aepvl")
+
+[node name="Weapon" type="Sprite2D" parent="target"]
+position = Vector2(-285, 170)
+scale = Vector2(4, 4)
+texture = ExtResource("7_eqcd5")
+
+[node name="hero" type="Sprite2D" parent="target"]
+position = Vector2(-375, 170)
+scale = Vector2(4, 4)
+texture = ExtResource("15_utdsf")
 
 [node name="Spell" type="Node2D" parent="."]
 position = Vector2(294, 187)

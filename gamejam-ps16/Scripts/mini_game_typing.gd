@@ -15,12 +15,15 @@ enum button{UP,DOWN,LEFT,RIGHT}
 @export var char_sprite : Sprite2D
 @export var char_target_hit: Texture2D
 
-@export var minigame_length : float = 3
+@export var min_minigame_length : float = 2
+@export var minigame_time_steps : float = 0.4
 @export var minigame_timer: Timer
 
 @export var buttons : Array[int] = []
 @export var buttons_sprites : Array[Sprite2D] = []
 
+@export var min_buttons: int = 3
+@export var max_buttons: int = 6
 var next_button : String = "move_up"
 var correct_button_presses: int = 0
 var button_count: int = 0
@@ -33,13 +36,14 @@ func _ready() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	#check for array size 
-	button_count = rng.randi_range(3,buttons.size()-1)
+	button_count = rng.randi_range(min_buttons,max_buttons)-1
 	#adjust game time based on buttons (keep it harder for more buttons)
 	for n in button_count:
 		buttons[n] = rng.randi_range(0,3)
 		buttons_sprites[n].texture = _set_button_images(buttons[n])
 	_set_next_button()
-	
+	#adjust timer based on number of button presses
+	var minigame_length = min_minigame_length + minigame_time_steps*(button_count-min_buttons+1)
 	minigame_timer.start(minigame_length)
 	parent._set_minigame_visual_timer(minigame_length)
 

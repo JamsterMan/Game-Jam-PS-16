@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b553lrn1iqdav"]
+[gd_scene load_steps=11 format=3 uid="uid://b553lrn1iqdav"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_aim_game.gd" id="1_r3ngn"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="2_bssfn"]
-[ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="2_ocspi"]
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="3_humtx"]
+[ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="4_31pnv"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="4_rrvqo"]
+[ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="5_83kha"]
 [ext_resource type="Texture2D" uid="uid://do26r2t7hfm2q" path="res://Sprites/crosshair.png" id="5_bpjir"]
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="6_oxthh"]
 
@@ -19,24 +20,11 @@ radius = 27.5
 process_mode = 4
 position = Vector2(-614, -349)
 script = ExtResource("1_r3ngn")
+person_count = 5
+min_minigame_length = 1.8
+minigame_time_steps = 0.4
 minigame_timer = NodePath("MinigameTimer")
 target_area = NodePath("Target/TargetArea")
-
-[node name="MinigameBackground" type="ColorRect" parent="."]
-visible = false
-offset_right = 1200.0
-offset_bottom = 700.0
-color = Color(0, 0.396549, 0.399054, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(0, 693)
-offset_left = -600.0
-offset_top = -350.0
-offset_right = 600.0
-offset_bottom = 350.0
-texture = ExtResource("2_ocspi")
-stretch_mode = 1
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(458, 342)
@@ -65,6 +53,21 @@ texture = ExtResource("3_humtx")
 position = Vector2(813, 350)
 scale = Vector2(2, 2)
 texture = ExtResource("3_humtx")
+
+[node name="Enemy4" type="Sprite2D" parent="."]
+position = Vector2(900, 347)
+scale = Vector2(2, 2)
+texture = ExtResource("3_humtx")
+
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(553, 650)
+scale = Vector2(2, 2)
+texture = ExtResource("4_31pnv")
+
+[node name="Bow" type="Sprite2D" parent="."]
+position = Vector2(614, 640)
+scale = Vector2(2, 2)
+texture = ExtResource("5_83kha")
 
 [node name="Crosshair" type="Area2D" parent="."]
 position = Vector2(615, 347)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfu28pq6wuky7"]
+[gd_scene load_steps=19 format=3 uid="uid://cfu28pq6wuky7"]
 
 [ext_resource type="AudioStream" uid="uid://blb4x7pka3owa" path="res://Audio/Orc Noise.wav" id="1_dc58e"]
 [ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="1_e6apx"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://bkylb54cq6ub2" path="res://Audio/Magic Sound Effect.wav" id="6_6xo85"]
 [ext_resource type="AudioStream" uid="uid://bxboycoqnm11f" path="res://Audio/Button Press.wav" id="7_dni82"]
 [ext_resource type="PackedScene" uid="uid://qn48ypmsva8n" path="res://Scenes/game_won.tscn" id="7_w7ahk"]
+[ext_resource type="Script" path="res://Scripts/minigame_background.gd" id="9_l8srb"]
+[ext_resource type="Texture2D" uid="uid://b8vl8gjjt4ace" path="res://Sprites/basic_ground_big.png" id="10_0suyy"]
 [ext_resource type="PackedScene" uid="uid://b6jcnj36x7l5p" path="res://Scenes/game_lost.tscn" id="10_jiaq0"]
 
 [sub_resource type="Gradient" id="Gradient_47rdi"]
@@ -50,6 +52,7 @@ button_sound = ExtResource("7_dni82")
 volume = -15.0
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
+visible = false
 offset_left = -600.0
 offset_top = -350.0
 offset_right = 600.0
@@ -65,6 +68,8 @@ offset_bottom = 350.0
 texture = ExtResource("1_e6apx")
 expand_mode = 1
 stretch_mode = 6
+script = ExtResource("9_l8srb")
+backgrounds = Array[CompressedTexture2D]([ExtResource("10_0suyy"), ExtResource("1_e6apx"), ExtResource("1_e6apx")])
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MinigameBackgroundTexture"]
 layout_mode = 0
@@ -79,7 +84,7 @@ texture_progress = SubResource("GradientTexture2D_2o1si")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose", "minigame_timer_visual", "sound_effects")]
+[node name="MiniGameController" type="Node2D" parent="." node_paths=PackedStringArray("minigame_info_timer", "next_minigame_timer", "minigame_info", "minigame_win", "minigame_lose", "minigame_timer_visual", "sound_effects", "minigame_background")]
 script = ExtResource("1_pg6cp")
 minigames = Array[String](["res://Scenes/mini_game_aim_game.tscn", "res://Scenes/mini_game_typing.tscn", "res://Scenes/mini_game_quick_time.tscn"])
 minigame_info_timer = NodePath("MinigameInfoTimer")
@@ -89,6 +94,7 @@ minigame_win = NodePath("NextMinigameTimer/GameWon")
 minigame_lose = NodePath("NextMinigameTimer/GameLost")
 minigame_timer_visual = NodePath("../MinigameBackgroundTexture/TextureProgressBar")
 sound_effects = NodePath("../Sounds")
+minigame_background = NodePath("../MinigameBackgroundTexture")
 
 [node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
 wait_time = 1.5

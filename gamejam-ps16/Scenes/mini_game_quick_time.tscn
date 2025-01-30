@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1g1j0vqsint1"]
+[gd_scene load_steps=12 format=3 uid="uid://1g1j0vqsint1"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_quick_time.gd" id="1_khvof"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="2_svijv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/MiniGame_Timer.gd" id="4_c8h27"]
 [ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="5_8k7on"]
 [ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="6_34nag"]
+[ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="6_aw33s"]
 [ext_resource type="Texture2D" uid="uid://485us4kx02t" path="res://Sprites/Runes_up2.png" id="7_mu0t8"]
 [ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_ok01q"]
 [ext_resource type="Texture2D" uid="uid://on3thud87cwq" path="res://Sprites/Runes_down2.png" id="9_02sor"]
@@ -14,6 +15,7 @@
 [node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("minigame_timer", "char_sprites", "target_sprites")]
 process_mode = 4
 script = ExtResource("1_khvof")
+minigame_time_steps = 0.4
 minigame_timer = NodePath("MinigameTimer")
 target_postions = Array[int]([0, 0, 0, 0, 0, 0])
 char_sprites = [NodePath("Extra2/ExtraSprite2"), NodePath("Extra4/ExtraSprite4"), NodePath("Extra/ExtraSprite"), NodePath("Extra3/ExtraSprite3")]
@@ -33,9 +35,14 @@ color = Color(0, 0.396549, 0.399054, 1)
 [node name="Target" type="Node2D" parent="."]
 
 [node name="Caracter" type="Sprite2D" parent="Target"]
-position = Vector2(1, -1)
+position = Vector2(-30, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("5_8k7on")
+
+[node name="Caracter2" type="Sprite2D" parent="Target"]
+position = Vector2(25, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("6_aw33s")
 
 [node name="Extra" type="Node2D" parent="."]
 position = Vector2(-200, 0)

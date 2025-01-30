@@ -8,6 +8,7 @@ extends Node2D
 @export var minigame_lose: Control
 @export var minigame_timer_visual: TextureProgressBar
 @export var sound_effects: AudioStreamPlayer
+@export var minigame_background: TextureRect
 
 var minigame
 var last_minigame_path_index: int = 0
@@ -29,9 +30,10 @@ func _ready() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	last_minigame_path_index = rng.randi_range(0,minigames.size()-1)
-	var next_minigame = load(minigames[last_minigame_path_index])
-	#var next_minigame = load(minigames[2])
+	#var next_minigame = load(minigames[last_minigame_path_index])
+	var next_minigame = load(minigames[0])
 	minigame_info._set_weapon_image(last_minigame_path_index)
+	minigame_background._change_background(last_minigame_path_index)
 	#set minigame backgorund
 	
 	minigame = next_minigame.instantiate()
@@ -69,11 +71,14 @@ func _reset_minigame():
 	if(minigame_path_index >= last_minigame_path_index):
 		minigame_path_index += 1
 	last_minigame_path_index = minigame_path_index
-	var next_minigame = load(minigames[minigame_path_index])
+	#game 0 = aim, 1 = type, 2 = quicktime
+	#var next_minigame = load(minigames[minigame_path_index])
+	var next_minigame = load(minigames[0])
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
 	#reset minigame info animation
 	minigame_info._set_weapon_image(minigame_path_index)
+	minigame_background._change_background(minigame_path_index)
 	minigame_info._reset_animation()
 
 #func _set_minigame_info(string?):

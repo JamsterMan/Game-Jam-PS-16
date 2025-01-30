@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b60aackbw5mmd"]
+[gd_scene load_steps=12 format=3 uid="uid://b60aackbw5mmd"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_50c3h"]
+[ext_resource type="Texture2D" uid="uid://dcqxycge5qqjv" path="res://Sprites/Title_Screen.png" id="1_b4ojj"]
 [ext_resource type="Texture2D" uid="uid://dmapyu46sj31d" path="res://Sprites/Player_normal.png" id="1_qy8be"]
 [ext_resource type="Texture2D" uid="uid://odtm2yuqcnet" path="res://Sprites/Player_sad.png" id="2_jethh"]
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="2_npqms"]
@@ -11,65 +12,59 @@
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="6_d33cg"]
 [ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="6_gwdj8"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_effects", "play_button", "how_to_button", "back_button", "how_to_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MinigameBackground" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -27.0
-offset_top = -23.0
-offset_right = 1185.0
-offset_bottom = 670.0
-color = Color(0, 0.396549, 0.399054, 1)
-
-[node name="Player" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 104.0
-offset_bottom = 100.0
-scale = Vector2(2, 2)
-texture = ExtResource("1_qy8be")
-
-[node name="PlayerSad" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 952.0
-offset_top = 1.0
-offset_right = 1052.0
-offset_bottom = 101.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_jethh")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_top = 100.0
-offset_right = 1150.0
-offset_bottom = 250.0
-theme_override_font_sizes/font_size = 100
-text = "Sabotage the Hero"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PlayButton" type="Button" parent="." node_paths=PackedStringArray("sound_effects")]
-layout_mode = 0
-offset_left = 265.0
-offset_top = 287.0
-offset_right = 875.0
-offset_bottom = 378.0
-theme_override_font_sizes/font_size = 60
-text = "PLAY"
 script = ExtResource("1_50c3h")
 sound_effects = NodePath("AudioStreamPlayer")
+play_button = NodePath("PlayButton")
+how_to_button = NodePath("HowToPlay")
+back_button = NodePath("HowToScreen/BackButton")
+how_to_screen = NodePath("HowToScreen")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayButton"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_o6sqc")
 volume_db = -5.0
 
-[node name="Player2" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 1175.0
+offset_bottom = 675.0
+texture = ExtResource("1_b4ojj")
+expand_mode = 2
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 450.0
+offset_right = 530.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="HowToPlay" type="Button" parent="."]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 450.0
+offset_right = 920.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 60
+text = "Games
+"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player2" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 800.0
 offset_top = 450.0
@@ -78,7 +73,7 @@ offset_bottom = 490.0
 scale = Vector2(2, 2)
 texture = ExtResource("1_qy8be")
 
-[node name="Orc" type="TextureRect" parent="."]
+[node name="Orc" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 440.0
@@ -87,7 +82,7 @@ offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_npqms")
 
-[node name="Princess" type="TextureRect" parent="."]
+[node name="Princess" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 440.0
@@ -96,7 +91,7 @@ offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_quacq")
 
-[node name="Orc 2" type="TextureRect" parent="."]
+[node name="Orc 2" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 440.0
@@ -105,7 +100,7 @@ offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_npqms")
 
-[node name="Hero" type="TextureRect" parent="."]
+[node name="Hero" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 650.0
 offset_top = 440.0
@@ -114,7 +109,7 @@ offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_d33cg")
 
-[node name="Sword" type="TextureRect" parent="."]
+[node name="Sword" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 730.0
 offset_top = 440.0
@@ -123,7 +118,7 @@ offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("4_kkafa")
 
-[node name="Bow" type="TextureRect" parent="."]
+[node name="Bow" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 800.0
 offset_top = 500.0
@@ -132,7 +127,7 @@ offset_bottom = 540.0
 scale = Vector2(2, 2)
 texture = ExtResource("5_k22i5")
 
-[node name="Staff" type="TextureRect" parent="."]
+[node name="Staff" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 875.0
 offset_top = 440.0
@@ -140,3 +135,54 @@ offset_right = 915.0
 offset_bottom = 480.0
 scale = Vector2(2, 2)
 texture = ExtResource("6_gwdj8")
+
+[node name="PlayerSad" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 1.0
+offset_right = 1052.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_jethh")
+
+[node name="Player" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 104.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_qy8be")
+
+[node name="HowToScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 1175.0
+offset_bottom = 675.0
+color = Color(0, 0.396549, 0.399054, 1)
+
+[node name="Label" type="Label" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 125.0
+offset_right = 1175.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 50
+text = "Sabotage the hero while he tries to save the princess
+
+Use the arrow keys to play the different minigames
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 554.0
+offset_right = 731.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 60
+text = "Back
+"

@@ -7,7 +7,8 @@ var correct_presses: int = 0
 
 enum button{UP,DOWN,LEFT,RIGHT}
 
-@export var minigame_length : float = 3
+@export var min_minigame_length : float = 2
+@export var minigame_time_steps : float = 0.5
 @export var minigame_timer: Timer
 
 @export var target_postions : Array[int] = []
@@ -36,7 +37,8 @@ func _ready() -> void:
 	#set position for first button
 	char_sprites[target_postions[0]].texture = char_target
 	_set_next_button()
-	
+	#adjust timer based on number of button presses
+	var minigame_length = min_minigame_length + minigame_time_steps*(presses_needed-min_presses)
 	minigame_timer.start(minigame_length)
 	get_parent()._set_minigame_visual_timer(minigame_length)
 
