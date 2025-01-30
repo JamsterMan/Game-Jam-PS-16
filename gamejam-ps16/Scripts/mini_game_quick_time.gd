@@ -38,9 +38,9 @@ func _ready() -> void:
 	char_sprites[target_postions[0]].texture = char_target
 	_set_next_button()
 	#adjust timer based on number of button presses
-	var minigame_length = min_minigame_length + minigame_time_steps*(presses_needed-min_presses)
+	var minigame_length = min_minigame_length + minigame_time_steps*(presses_needed-min_presses)-parent._get_time_reduction()
 	minigame_timer.start(minigame_length)
-	get_parent()._set_minigame_visual_timer(minigame_length)
+	parent._set_minigame_visual_timer(minigame_length)
 
 #converts button ints into button images
 func _set_next_images():
@@ -74,9 +74,9 @@ func _set_target_hit():
 #minigame is over -> figure out if game was completed or not
 func _minigame_timer_timeout():
 	if(correct_presses >= presses_needed):
-		get_parent()._minigame_win()
+		parent._minigame_win()
 	else:
-		get_parent()._minigame_lose()
+		parent._minigame_lose()
 		
 		# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

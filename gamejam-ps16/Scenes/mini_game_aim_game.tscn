@@ -21,7 +21,6 @@ process_mode = 4
 position = Vector2(-614, -349)
 script = ExtResource("1_r3ngn")
 person_count = 5
-min_minigame_length = 1.8
 minigame_time_steps = 0.4
 minigame_timer = NodePath("MinigameTimer")
 target_area = NodePath("Target/TargetArea")

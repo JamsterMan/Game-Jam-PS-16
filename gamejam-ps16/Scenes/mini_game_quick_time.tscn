@@ -15,6 +15,7 @@
 [node name="mini_game_quick_time" type="Node2D" node_paths=PackedStringArray("minigame_timer", "char_sprites", "target_sprites")]
 process_mode = 4
 script = ExtResource("1_khvof")
+min_minigame_length = 2.2
 minigame_time_steps = 0.4
 minigame_timer = NodePath("MinigameTimer")
 target_postions = Array[int]([0, 0, 0, 0, 0, 0])

@@ -16,6 +16,9 @@ var start_visual_timer: bool = false
 var time_past: float = 0
 var minigame_count:int = 0
 
+@export var minigame_time_reduction: float = 0.05
+@export var minigame_time_reduction_interval: int = 10
+
 #minigame starts here
 func _minigame_timer_timeout():
 	#hide info screen
@@ -94,6 +97,11 @@ func _process(delta: float) -> void:
 		if(time_past >= 0.05):
 			time_past -= 0.05
 			minigame_timer_visual.value -= 0.05
+
+#reduce time given for minigames the more games are played
+func _get_time_reduction() -> float:
+	print(minigame_count/minigame_time_reduction_interval)
+	return minigame_time_reduction*(minigame_count/minigame_time_reduction_interval)
 
 func _death_sound():
 	sound_effects._play_death_sound()

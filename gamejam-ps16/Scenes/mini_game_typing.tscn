@@ -91,7 +91,6 @@ right_image_pressed = ExtResource("8_q0aww")
 left_image_pressed = ExtResource("9_ppldq")
 char_sprite = NodePath("target/Target")
 char_target_hit = ExtResource("10_o5hs5")
-min_minigame_length = 1.8
 minigame_timer = NodePath("MinigameTimer")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]

@@ -46,7 +46,7 @@ func _ready() -> void:
 		buttons_sprites[n].texture = _set_button_images(buttons[n])
 	_set_next_button()
 	#adjust timer based on number of button presses
-	var minigame_length = min_minigame_length + minigame_time_steps*(button_count-min_buttons+1)
+	var minigame_length = min_minigame_length + minigame_time_steps*(button_count-min_buttons+1)-parent._get_time_reduction()
 	minigame_timer.start(minigame_length)
 	parent._set_minigame_visual_timer(minigame_length)
 

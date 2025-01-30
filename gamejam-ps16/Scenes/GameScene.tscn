@@ -87,6 +87,7 @@ minigame_lose = NodePath("NextMinigameTimer/GameLost")
 minigame_timer_visual = NodePath("../MinigameBackgroundTexture/TextureProgressBar")
 sound_effects = NodePath("../Sounds")
 minigame_background = NodePath("../MinigameBackgroundTexture")
+minigame_time_reduction_interval = 5
 
 [node name="MinigameInfoTimer" type="Timer" parent="MiniGameController"]
 wait_time = 1.5
