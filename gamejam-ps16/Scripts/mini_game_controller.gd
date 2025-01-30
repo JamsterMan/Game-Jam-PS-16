@@ -14,9 +14,10 @@ var minigame
 var last_minigame_path_index: int = 0
 var start_visual_timer: bool = false
 var time_past: float = 0
+var minigame_count:int = 0
 
+#minigame starts here
 func _minigame_timer_timeout():
-	print("Mini game start")
 	#hide info screen
 	minigame_info.set_visible(false)
 	#show and activate minigame
@@ -30,16 +31,16 @@ func _ready() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	last_minigame_path_index = rng.randi_range(0,minigames.size()-1)
-	#var next_minigame = load(minigames[last_minigame_path_index])
-	var next_minigame = load(minigames[0])
+	var next_minigame = load(minigames[last_minigame_path_index])
 	minigame_info._set_weapon_image(last_minigame_path_index)
 	minigame_background._change_background(last_minigame_path_index)
-	#set minigame backgorund
 	
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
 
 func _minigame_win():
+	minigame_count += 1
+	minigame_win._set_minigame_count_label(minigame_count)
 	start_visual_timer = false
 	minigame_win.set_visible(true)
 	next_minigame_timer.start(2)
@@ -52,13 +53,11 @@ func _minigame_lose():
 	#game over
 
 func _next_minigame_timer_timeout():
-	print("Next minigame loading")
 	_reset_minigame()
 
 func _reset_minigame():
 	minigame_win.set_visible(false)
 	#set up minigame info screen
-	#minigame_info_timer._show_info()
 	minigame_info.set_visible(true)
 	minigame_info_timer.start(1.5)
 	#set up minigame
@@ -72,8 +71,7 @@ func _reset_minigame():
 		minigame_path_index += 1
 	last_minigame_path_index = minigame_path_index
 	#game 0 = aim, 1 = type, 2 = quicktime
-	#var next_minigame = load(minigames[minigame_path_index])
-	var next_minigame = load(minigames[0])
+	var next_minigame = load(minigames[minigame_path_index])
 	minigame = next_minigame.instantiate()
 	add_child(minigame)
 	#reset minigame info animation
@@ -89,6 +87,7 @@ func _set_minigame_visual_timer(time:int):
 	time_past = 0.05
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# used to show the time remaining on screen
 func _process(delta: float) -> void:
 	if(start_visual_timer):
 		time_past += delta

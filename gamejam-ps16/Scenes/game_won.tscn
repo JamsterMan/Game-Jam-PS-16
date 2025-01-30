@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://qn48ypmsva8n"]
+[gd_scene load_steps=5 format=3 uid="uid://qn48ypmsva8n"]
 
+[ext_resource type="Script" path="res://Scripts/game_won.gd" id="1_gwr7s"]
 [ext_resource type="Texture2D" uid="uid://dsg52at2d4v78" path="res://Sprites/Player_Happy.png" id="1_kyijl"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="2_25123"]
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="3_e7e1y"]
 
-[node name="GameWon" type="Control"]
+[node name="GameWon" type="Control" node_paths=PackedStringArray("minigame_count_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gwr7s")
+minigame_count_label = NodePath("Count")
 
 [node name="MinigameBackground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -33,6 +36,17 @@ offset_right = 1152.0
 offset_bottom = 298.0
 theme_override_font_sizes/font_size = 100
 text = "Success"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 0
+offset_top = 162.0
+offset_right = 1151.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 50
+text = "0
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 

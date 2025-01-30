@@ -29,6 +29,9 @@ var correct_button_presses: int = 0
 var button_count: int = 0
 var parent: Node2D
 
+@export var animation: AnimationPlayer
+@export var death_animation_done = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parent = get_parent()
@@ -63,8 +66,7 @@ func _set_next_button():
 	if(correct_button_presses >= button_count):
 		parent._magic_sound()
 		#play death sound after animation
-		parent._death_sound()
-		char_sprite.texture = char_target_hit
+		animation.queue("Princess_death")
 		return
 	if(buttons[correct_button_presses] == button.UP):
 		next_button = "move_up"
@@ -75,6 +77,7 @@ func _set_next_button():
 	else:
 		next_button = "move_left"
 
+#changes button sprites to show that the button has been entered correctly
 func _set_pressed_button():
 	if(next_button == "move_up"):
 		buttons_sprites[correct_button_presses].texture = up_image_pressed
@@ -85,13 +88,11 @@ func _set_pressed_button():
 	else:
 		buttons_sprites[correct_button_presses].texture = left_image_pressed
 
+#minigame is over -> figure out if game was completed or not
 func _minigame_timer_timeout():
-	print("Mini game end")
 	if(correct_button_presses == button_count):
-		print("Mini game win")
 		parent._minigame_win()
 	else:
-		print("Mini game lose")
 		parent._minigame_lose()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -102,3 +103,6 @@ func _process(_delta: float) -> void:
 			correct_button_presses += 1
 			_set_next_button()
 			#check if game done -> change sprite
+	if(death_animation_done):
+		parent._death_sound()
+		death_animation_done = false

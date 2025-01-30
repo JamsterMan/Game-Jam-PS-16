@@ -1,16 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://b60aackbw5mmd"]
+[gd_scene load_steps=14 format=3 uid="uid://b60aackbw5mmd"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_50c3h"]
 [ext_resource type="Texture2D" uid="uid://dcqxycge5qqjv" path="res://Sprites/Title_Screen.png" id="1_b4ojj"]
 [ext_resource type="Texture2D" uid="uid://dmapyu46sj31d" path="res://Sprites/Player_normal.png" id="1_qy8be"]
-[ext_resource type="Texture2D" uid="uid://odtm2yuqcnet" path="res://Sprites/Player_sad.png" id="2_jethh"]
-[ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="2_npqms"]
 [ext_resource type="Texture2D" uid="uid://drubo8sc3ihhf" path="res://Sprites/Princess.png" id="3_quacq"]
 [ext_resource type="Texture2D" uid="uid://c81kyv6odec0m" path="res://Sprites/Sword.png" id="4_kkafa"]
 [ext_resource type="AudioStream" uid="uid://bxboycoqnm11f" path="res://Audio/Button Press.wav" id="4_o6sqc"]
 [ext_resource type="Texture2D" uid="uid://epgfmeb8l3ay" path="res://Sprites/Bow.png" id="5_k22i5"]
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="6_d33cg"]
 [ext_resource type="Texture2D" uid="uid://bf4huvuhf7hff" path="res://Sprites/staff.png" id="6_gwdj8"]
+[ext_resource type="Texture2D" uid="uid://485us4kx02t" path="res://Sprites/Runes_up2.png" id="10_q3mpc"]
+[ext_resource type="Texture2D" uid="uid://on3thud87cwq" path="res://Sprites/Runes_down2.png" id="11_utkn6"]
+[ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="12_jxcor"]
+[ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="13_t2lq2"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_effects", "play_button", "how_to_button", "back_button", "how_to_screen")]
 layout_mode = 3
@@ -58,101 +60,6 @@ theme_override_font_sizes/font_size = 60
 text = "Games
 "
 
-[node name="Control" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Player2" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 450.0
-offset_right = 840.0
-offset_bottom = 490.0
-scale = Vector2(2, 2)
-texture = ExtResource("1_qy8be")
-
-[node name="Orc" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 440.0
-offset_right = 140.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_npqms")
-
-[node name="Princess" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 440.0
-offset_right = 240.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("3_quacq")
-
-[node name="Orc 2" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 440.0
-offset_right = 340.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_npqms")
-
-[node name="Hero" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 650.0
-offset_top = 440.0
-offset_right = 690.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_d33cg")
-
-[node name="Sword" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 730.0
-offset_top = 440.0
-offset_right = 770.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("4_kkafa")
-
-[node name="Bow" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 500.0
-offset_right = 840.0
-offset_bottom = 540.0
-scale = Vector2(2, 2)
-texture = ExtResource("5_k22i5")
-
-[node name="Staff" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 875.0
-offset_top = 440.0
-offset_right = 915.0
-offset_bottom = 480.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_gwdj8")
-
-[node name="PlayerSad" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 952.0
-offset_top = 1.0
-offset_right = 1052.0
-offset_bottom = 101.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_jethh")
-
-[node name="Player" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 104.0
-offset_bottom = 100.0
-scale = Vector2(2, 2)
-texture = ExtResource("1_qy8be")
-
 [node name="HowToScreen" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
@@ -169,7 +76,7 @@ offset_top = 125.0
 offset_right = 1175.0
 offset_bottom = 275.0
 theme_override_font_sizes/font_size = 50
-text = "Sabotage the hero while he tries to save the princess
+text = "You possess the hero's weapons to try to kill the princess
 
 Use the arrow keys to play the different minigames
 "
@@ -186,3 +93,93 @@ offset_bottom = 645.0
 theme_override_font_sizes/font_size = 60
 text = "Back
 "
+
+[node name="hero" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 60.0
+offset_right = 532.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_d33cg")
+
+[node name="Princess" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 251.0
+offset_right = 637.0
+offset_bottom = 291.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_quacq")
+
+[node name="Player" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 104.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_qy8be")
+
+[node name="sword" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 60.0
+offset_right = 662.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_kkafa")
+
+[node name="staff" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 60.0
+offset_right = 725.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_gwdj8")
+
+[node name="bow" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 60.0
+offset_right = 790.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_k22i5")
+
+[node name="arrowkey" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 410.0
+offset_right = 231.0
+offset_bottom = 450.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_q3mpc")
+
+[node name="arrowkey2" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 410.0
+offset_right = 283.0
+offset_bottom = 450.0
+scale = Vector2(2, 2)
+texture = ExtResource("11_utkn6")
+
+[node name="arrowkey3" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 410.0
+offset_right = 337.0
+offset_bottom = 450.0
+scale = Vector2(2, 2)
+texture = ExtResource("12_jxcor")
+
+[node name="arrowkey4" type="TextureRect" parent="HowToScreen"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 410.0
+offset_right = 389.0
+offset_bottom = 450.0
+scale = Vector2(2, 2)
+texture = ExtResource("13_t2lq2")

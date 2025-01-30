@@ -34,7 +34,7 @@ func _ready() -> void:
 	for n in presses_needed:
 		target_postions[n] = rng.randi_range(0,3)
 		target_sprites[n].texture = char_target
-	#set position for first button
+	#set sprites for first button press
 	char_sprites[target_postions[0]].texture = char_target
 	_set_next_button()
 	#adjust timer based on number of button presses
@@ -71,13 +71,11 @@ func _set_target_hit():
 	target_sprites[correct_presses].texture = char_target_hit
 	parent._sword_sound()
 
+#minigame is over -> figure out if game was completed or not
 func _minigame_timer_timeout():
-	print("Mini game end")
 	if(correct_presses >= presses_needed):
-		print("Mini game win")
 		get_parent()._minigame_win()
 	else:
-		print("Mini game lose")
 		get_parent()._minigame_lose()
 		
 		# Called every frame. 'delta' is the elapsed time since the previous frame.

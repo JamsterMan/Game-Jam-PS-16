@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://43srxjcgyb0d"]
+[gd_scene load_steps=20 format=3 uid="uid://43srxjcgyb0d"]
 
 [ext_resource type="Script" path="res://Scripts/mini_game_typing.gd" id="1_mxqhv"]
 [ext_resource type="Texture2D" uid="uid://bh7e2yv3p1co2" path="res://Sprites/Runes_up1.png" id="2_uydm4"]
@@ -13,11 +13,72 @@
 [ext_resource type="Texture2D" uid="uid://ctirucnhdxe7r" path="res://Sprites/Runes_right2.png" id="8_q0aww"]
 [ext_resource type="Texture2D" uid="uid://diqj3xo3qflt7" path="res://Sprites/Runes_left2.png" id="9_ppldq"]
 [ext_resource type="Texture2D" uid="uid://cem3faymlq7no" path="res://Sprites/gravestone.png" id="10_o5hs5"]
-[ext_resource type="Texture2D" uid="uid://dt65f4uaiwvdr" path="res://Sprites/basic_ground.png" id="11_of66i"]
+[ext_resource type="Texture2D" uid="uid://dghc5oicuud00" path="res://Sprites/fire.png" id="11_dxxks"]
 [ext_resource type="Texture2D" uid="uid://d00ckynh8h2k3" path="res://Sprites/Orc.png" id="13_aepvl"]
 [ext_resource type="Texture2D" uid="uid://bgiudmtthfprl" path="res://Sprites/Hero.png" id="15_utdsf"]
 
-[node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("char_sprite", "minigame_timer", "buttons_sprites")]
+[sub_resource type="Animation" id="Animation_qr2l7"]
+resource_name = "Princess_death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target/Target:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_dxxks"), ExtResource("10_o5hs5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:death_animation_done")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6is02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:death_animation_done")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("target/Target:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_mrv0g")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddg8d"]
+_data = {
+"Princess_death": SubResource("Animation_qr2l7"),
+"RESET": SubResource("Animation_6is02")
+}
+
+[node name="MinigameTypingGame" type="Node2D" node_paths=PackedStringArray("char_sprite", "minigame_timer", "buttons_sprites", "animation")]
 process_mode = 4
 script = ExtResource("1_mxqhv")
 up_image = ExtResource("2_uydm4")
@@ -34,24 +95,12 @@ min_minigame_length = 1.8
 minigame_timer = NodePath("MinigameTimer")
 buttons = Array[int]([0, 0, 0, 0, 0, 0])
 buttons_sprites = [NodePath("Spell/ButtonOne"), NodePath("Spell/ButtonTwo"), NodePath("Spell/ButtonThree"), NodePath("Spell/ButtonFour"), NodePath("Spell/ButtonFive"), NodePath("Spell/ButtonSix")]
+animation = NodePath("AnimationPlayer")
 
-[node name="MinigameBackground" type="ColorRect" parent="."]
-offset_left = -600.0
-offset_top = -350.0
-offset_right = 600.0
-offset_bottom = 350.0
-color = Color(0, 0.396549, 0.399054, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(0, 693)
-offset_left = -600.0
-offset_top = -350.0
-offset_right = 600.0
-offset_bottom = 350.0
-scale = Vector2(2, 2)
-texture = ExtResource("11_of66i")
-stretch_mode = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ddg8d")
+}
 
 [node name="target" type="Node2D" parent="."]
 

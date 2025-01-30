@@ -19,20 +19,12 @@ func _ready() -> void:
 
 func _play_button_sound():
 	sounds.play_stream(button_sound,0,volume, 1.0)
-	#stream = button_sound
-	#play(0)
 	
 func _play_death_sound():
 	sounds.play_stream(death_sound,0,volume, rng.randf_range(0.9,1.1))
-	#stream = death_sound
-	#play(0)
 
 func _play_magic_sound():
 	sounds.play_stream(magic_sound,0,volume+2, rng.randf_range(0.9,1.1))
-	#stream = magic_sound
-	#play(0)
 
 func _play_sword_sound():
 	sounds.play_stream(sword_sound,0,volume+2, rng.randf_range(0.9,1.1))
-	#stream = sword_sound
-	#play(0)

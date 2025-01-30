@@ -24,14 +24,6 @@ char_target = ExtResource("2_svijv")
 char_fake = ExtResource("3_h1e52")
 char_target_hit = ExtResource("4_47cbh")
 
-[node name="MinigameBackground" type="ColorRect" parent="."]
-visible = false
-offset_left = -601.0
-offset_top = -343.0
-offset_right = 611.0
-offset_bottom = 350.0
-color = Color(0, 0.396549, 0.399054, 1)
-
 [node name="Target" type="Node2D" parent="."]
 
 [node name="Caracter" type="Sprite2D" parent="Target"]

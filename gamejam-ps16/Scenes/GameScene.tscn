@@ -51,14 +51,6 @@ magic_sound = ExtResource("6_6xo85")
 button_sound = ExtResource("7_dni82")
 volume = -15.0
 
-[node name="MinigameBackground" type="ColorRect" parent="."]
-visible = false
-offset_left = -600.0
-offset_top = -350.0
-offset_right = 600.0
-offset_bottom = 350.0
-color = Color(0, 0.396549, 0.399054, 1)
-
 [node name="MinigameBackgroundTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(0, 693)
 offset_left = -600.0
