@@ -20,7 +20,12 @@ enum button{UP,DOWN,LEFT,RIGHT}
 @export var char_fake: Texture2D
 @export var char_target_hit: Texture2D
 
+@export var miss_delay : float = 0.3
+var miss = false
+var delay_time : float = 0
+
 var next_button : String = "move_up"
+var other_buttons : String = "only_up"
 var parent: Node2D
 
 # Called when the node enters the scene tree for the first time.
@@ -60,12 +65,16 @@ func _set_next_button():
 		return
 	if(target_postions[correct_presses] == button.UP):
 		next_button = "move_up"
+		other_buttons = "only_up"
 	elif(target_postions[correct_presses] == button.DOWN):
 		next_button = "move_down"
+		other_buttons = "only_down"
 	elif(target_postions[correct_presses] == button.RIGHT):
 		next_button = "move_right"
+		other_buttons = "only_right"
 	else:
 		next_button = "move_left"
+		other_buttons = "only_left"
 
 func _set_target_hit():
 	target_sprites[correct_presses].texture = char_target_hit
@@ -81,9 +90,17 @@ func _minigame_timer_timeout():
 		# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(correct_presses < presses_needed):
-		if(Input.is_action_just_pressed(next_button)):
-			_set_target_hit()
-			correct_presses += 1
-			_set_next_button()
-			_set_next_images()
-				
+		if(Input.is_action_just_pressed(other_buttons)):
+			#stops player spam - need indiceation like sound
+			miss = true
+			delay_time = 0.0
+		if(!miss):
+			if(Input.is_action_just_pressed(next_button)):
+				_set_target_hit()
+				correct_presses += 1
+				_set_next_button()
+				_set_next_images()
+		else:
+			delay_time += _delta
+			if(delay_time >= miss_delay):
+				miss = false

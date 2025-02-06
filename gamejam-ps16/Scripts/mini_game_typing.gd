@@ -24,7 +24,14 @@ enum button{UP,DOWN,LEFT,RIGHT}
 
 @export var min_buttons: int = 3
 @export var max_buttons: int = 6
+
+@export var miss_delay : float = 0.3
+var miss = false
+var delay_time : float = 0
+
 var next_button : String = "move_up"
+var other_buttons : String = "only_up"
+
 var correct_button_presses: int = 0
 var button_count: int = 0
 var parent: Node2D
@@ -70,12 +77,16 @@ func _set_next_button():
 		return
 	if(buttons[correct_button_presses] == button.UP):
 		next_button = "move_up"
+		other_buttons = "only_up"
 	elif(buttons[correct_button_presses] == button.DOWN):
 		next_button = "move_down"
+		other_buttons = "only_down"
 	elif(buttons[correct_button_presses] == button.RIGHT):
 		next_button = "move_right"
+		other_buttons = "only_right"
 	else:
 		next_button = "move_left"
+		other_buttons = "only_left"
 
 #changes button sprites to show that the button has been entered correctly
 func _set_pressed_button():
@@ -98,10 +109,20 @@ func _minigame_timer_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(correct_button_presses < button_count):
-		if(Input.is_action_just_pressed(next_button)):
-			_set_pressed_button()
-			correct_button_presses += 1
-			_set_next_button()
+		if(Input.is_action_just_pressed(other_buttons)):
+			#stops player spam - need indiceation like sound
+			miss = true
+			delay_time = 0.0
+		if(!miss):
+			if(Input.is_action_just_pressed(next_button)):
+				_set_pressed_button()
+				correct_button_presses += 1
+				_set_next_button()
+		else:
+			delay_time += _delta
+			print(delay_time)
+			if(delay_time >= miss_delay):
+				miss = false
 			#check if game done -> change sprite
 	if(death_animation_done):
 		parent._death_sound()
